@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="autokModelDB.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="autoktabla">
+          <Key>
+            <PropertyRef Name="rendszam" />
+          </Key>
+          <Property Name="rendszam" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="alvazszam" Type="varchar" MaxLength="17" Nullable="false" />
+          <Property Name="km" Type="int" />
+          <Property Name="autoradio" Type="tinyint" />
+          <Property Name="vontatokotel" Type="tinyint" />
+          <Property Name="bikakabel" Type="tinyint" />
+          <Property Name="mentodoboz" Type="tinyint" />
+          <Property Name="gyartmany" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tipus" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="felhtabla">
+          <Key>
+            <PropertyRef Name="idFelh" />
+          </Key>
+          <Property Name="idFelh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vezetekNev" Type="mediumtext" Nullable="false" />
+          <Property Name="keresztNev" Type="mediumtext" Nullable="false" />
+          <Property Name="varos" Type="mediumtext" />
+          <Property Name="utcaHsz" Type="mediumtext" />
+          <Property Name="telefon" Type="varchar" MaxLength="13" />
+          <Property Name="belepesNev" Type="mediumtext" Nullable="false" />
+          <Property Name="belepesJelszo" Type="mediumtext" Nullable="false" />
+          <Property Name="soforE" Type="tinyint" Nullable="false" />
+          <Property Name="adminE" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="muszakiallapottabla">
+          <Key>
+            <PropertyRef Name="idmuszakiAllapot" />
+          </Key>
+          <Property Name="idmuszakiAllapot" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rendszamHOZ" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="matricaMegyei" Type="tinyint" Nullable="false" />
+          <Property Name="matricaOrszagos" Type="tinyint" Nullable="false" />
+          <Property Name="teligumi" Type="tinyint" Nullable="false" />
+          <Property Name="nyarigumi" Type="tinyint" Nullable="false" />
+          <Property Name="muszakiErv" Type="date" Nullable="false" />
+          <Property Name="biztosErv" Type="date" Nullable="false" />
+          <Property Name="evjarat" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="soforautojatabla">
+          <Key>
+            <PropertyRef Name="idsoforAutoja" />
+          </Key>
+          <Property Name="idsoforAutoja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idfelh" Type="int" Nullable="false" />
+          <Property Name="rendszam" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="szervizkonyvtabla">
+          <Key>
+            <PropertyRef Name="idszervizkonyv" />
+          </Key>
+          <Property Name="idszervizkonyv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rendszamHOZ" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="idopont" Type="date" Nullable="false" />
+          <Property Name="leiras" Type="longtext" />
+          <Property Name="cascoE" Type="tinyint" Nullable="false" />
+          <Property Name="biztositasE" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="muszakiallapottabla_ibfk_1">
+          <End Role="autoktabla" Type="Self.autoktabla" Multiplicity="1" />
+          <End Role="muszakiallapottabla" Type="Self.muszakiallapottabla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autoktabla">
+              <PropertyRef Name="rendszam" />
+            </Principal>
+            <Dependent Role="muszakiallapottabla">
+              <PropertyRef Name="rendszamHOZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rendszamHOZ">
+          <End Role="autoktabla" Type="Self.autoktabla" Multiplicity="1" />
+          <End Role="szervizkonyvtabla" Type="Self.szervizkonyvtabla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autoktabla">
+              <PropertyRef Name="rendszam" />
+            </Principal>
+            <Dependent Role="szervizkonyvtabla">
+              <PropertyRef Name="rendszamHOZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="soforautojatabla_ibfk_1">
+          <End Role="felhtabla" Type="Self.felhtabla" Multiplicity="1" />
+          <End Role="soforautojatabla" Type="Self.soforautojatabla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="felhtabla">
+              <PropertyRef Name="idFelh" />
+            </Principal>
+            <Dependent Role="soforautojatabla">
+              <PropertyRef Name="idfelh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="soforautojatabla_ibfk_2">
+          <End Role="autoktabla" Type="Self.autoktabla" Multiplicity="1" />
+          <End Role="soforautojatabla" Type="Self.soforautojatabla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autoktabla">
+              <PropertyRef Name="rendszam" />
+            </Principal>
+            <Dependent Role="soforautojatabla">
+              <PropertyRef Name="rendszam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="autokModelDBStoreContainer">
+          <EntitySet Name="autoktabla" EntityType="Self.autoktabla" Schema="autok" store:Type="Tables" />
+          <EntitySet Name="felhtabla" EntityType="Self.felhtabla" Schema="autok" store:Type="Tables" />
+          <EntitySet Name="muszakiallapottabla" EntityType="Self.muszakiallapottabla" Schema="autok" store:Type="Tables" />
+          <EntitySet Name="soforautojatabla" EntityType="Self.soforautojatabla" Schema="autok" store:Type="Tables" />
+          <EntitySet Name="szervizkonyvtabla" EntityType="Self.szervizkonyvtabla" Schema="autok" store:Type="Tables" />
+          <AssociationSet Name="muszakiallapottabla_ibfk_1" Association="Self.muszakiallapottabla_ibfk_1">
+            <End Role="autoktabla" EntitySet="autoktabla" />
+            <End Role="muszakiallapottabla" EntitySet="muszakiallapottabla" />
+          </AssociationSet>
+          <AssociationSet Name="rendszamHOZ" Association="Self.rendszamHOZ">
+            <End Role="autoktabla" EntitySet="autoktabla" />
+            <End Role="szervizkonyvtabla" EntitySet="szervizkonyvtabla" />
+          </AssociationSet>
+          <AssociationSet Name="soforautojatabla_ibfk_1" Association="Self.soforautojatabla_ibfk_1">
+            <End Role="felhtabla" EntitySet="felhtabla" />
+            <End Role="soforautojatabla" EntitySet="soforautojatabla" />
+          </AssociationSet>
+          <AssociationSet Name="soforautojatabla_ibfk_2" Association="Self.soforautojatabla_ibfk_2">
+            <End Role="autoktabla" EntitySet="autoktabla" />
+            <End Role="soforautojatabla" EntitySet="soforautojatabla" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="autokModelDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="autoktabla">
+          <Key>
+            <PropertyRef Name="rendszam" />
+          </Key>
+          <Property Name="rendszam" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alvazszam" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="km" Type="Int32" />
+          <Property Name="autoradio" Type="SByte" />
+          <Property Name="vontatokotel" Type="SByte" />
+          <Property Name="bikakabel" Type="SByte" />
+          <Property Name="mentodoboz" Type="SByte" />
+          <Property Name="gyartmany" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="muszakiallapottabla" Relationship="Self.muszakiallapottabla_ibfk_1" FromRole="autoktabla" ToRole="muszakiallapottabla" />
+          <NavigationProperty Name="szervizkonyvtabla" Relationship="Self.rendszamHOZ" FromRole="autoktabla" ToRole="szervizkonyvtabla" />
+          <NavigationProperty Name="soforautojatabla" Relationship="Self.soforautojatabla_ibfk_2" FromRole="autoktabla" ToRole="soforautojatabla" />
+        </EntityType>
+        <EntityType Name="felhtabla">
+          <Key>
+            <PropertyRef Name="idFelh" />
+          </Key>
+          <Property Name="idFelh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vezetekNev" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="keresztNev" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="varos" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="utcaHsz" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="belepesNev" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="belepesJelszo" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soforE" Type="SByte" Nullable="false" />
+          <Property Name="adminE" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="soforautojatabla" Relationship="Self.soforautojatabla_ibfk_1" FromRole="felhtabla" ToRole="soforautojatabla" />
+        </EntityType>
+        <EntityType Name="muszakiallapottabla">
+          <Key>
+            <PropertyRef Name="idmuszakiAllapot" />
+          </Key>
+          <Property Name="idmuszakiAllapot" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rendszamHOZ" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matricaMegyei" Type="SByte" Nullable="false" />
+          <Property Name="matricaOrszagos" Type="SByte" Nullable="false" />
+          <Property Name="teligumi" Type="SByte" Nullable="false" />
+          <Property Name="nyarigumi" Type="SByte" Nullable="false" />
+          <Property Name="muszakiErv" Type="DateTime" Nullable="false" />
+          <Property Name="biztosErv" Type="DateTime" Nullable="false" />
+          <Property Name="evjarat" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="autoktabla" Relationship="Self.muszakiallapottabla_ibfk_1" FromRole="muszakiallapottabla" ToRole="autoktabla" />
+        </EntityType>
+        <EntityType Name="soforautojatabla">
+          <Key>
+            <PropertyRef Name="idsoforAutoja" />
+          </Key>
+          <Property Name="idsoforAutoja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idfelh" Type="Int32" Nullable="false" />
+          <Property Name="rendszam" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="autoktabla" Relationship="Self.soforautojatabla_ibfk_2" FromRole="soforautojatabla" ToRole="autoktabla" />
+          <NavigationProperty Name="felhtabla" Relationship="Self.soforautojatabla_ibfk_1" FromRole="soforautojatabla" ToRole="felhtabla" />
+        </EntityType>
+        <EntityType Name="szervizkonyvtabla">
+          <Key>
+            <PropertyRef Name="idszervizkonyv" />
+          </Key>
+          <Property Name="idszervizkonyv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rendszamHOZ" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idopont" Type="DateTime" Nullable="false" />
+          <Property Name="leiras" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="cascoE" Type="SByte" Nullable="false" />
+          <Property Name="biztositasE" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="autoktabla" Relationship="Self.rendszamHOZ" FromRole="szervizkonyvtabla" ToRole="autoktabla" />
+        </EntityType>
+        <Association Name="muszakiallapottabla_ibfk_1">
+          <End Role="autoktabla" Type="Self.autoktabla" Multiplicity="1" />
+          <End Role="muszakiallapottabla" Type="Self.muszakiallapottabla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autoktabla">
+              <PropertyRef Name="rendszam" />
+            </Principal>
+            <Dependent Role="muszakiallapottabla">
+              <PropertyRef Name="rendszamHOZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rendszamHOZ">
+          <End Role="autoktabla" Type="Self.autoktabla" Multiplicity="1" />
+          <End Role="szervizkonyvtabla" Type="Self.szervizkonyvtabla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autoktabla">
+              <PropertyRef Name="rendszam" />
+            </Principal>
+            <Dependent Role="szervizkonyvtabla">
+              <PropertyRef Name="rendszamHOZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="soforautojatabla_ibfk_2">
+          <End Role="autoktabla" Type="Self.autoktabla" Multiplicity="1" />
+          <End Role="soforautojatabla" Type="Self.soforautojatabla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autoktabla">
+              <PropertyRef Name="rendszam" />
+            </Principal>
+            <Dependent Role="soforautojatabla">
+              <PropertyRef Name="rendszam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="soforautojatabla_ibfk_1">
+          <End Role="felhtabla" Type="Self.felhtabla" Multiplicity="1" />
+          <End Role="soforautojatabla" Type="Self.soforautojatabla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="felhtabla">
+              <PropertyRef Name="idFelh" />
+            </Principal>
+            <Dependent Role="soforautojatabla">
+              <PropertyRef Name="idfelh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="autokContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="autoktabla" EntityType="Self.autoktabla" />
+          <EntitySet Name="felhtabla" EntityType="Self.felhtabla" />
+          <EntitySet Name="muszakiallapottabla" EntityType="Self.muszakiallapottabla" />
+          <EntitySet Name="soforautojatabla" EntityType="Self.soforautojatabla" />
+          <EntitySet Name="szervizkonyvtabla" EntityType="Self.szervizkonyvtabla" />
+          <AssociationSet Name="muszakiallapottabla_ibfk_1" Association="Self.muszakiallapottabla_ibfk_1">
+            <End Role="autoktabla" EntitySet="autoktabla" />
+            <End Role="muszakiallapottabla" EntitySet="muszakiallapottabla" />
+          </AssociationSet>
+          <AssociationSet Name="rendszamHOZ" Association="Self.rendszamHOZ">
+            <End Role="autoktabla" EntitySet="autoktabla" />
+            <End Role="szervizkonyvtabla" EntitySet="szervizkonyvtabla" />
+          </AssociationSet>
+          <AssociationSet Name="soforautojatabla_ibfk_2" Association="Self.soforautojatabla_ibfk_2">
+            <End Role="autoktabla" EntitySet="autoktabla" />
+            <End Role="soforautojatabla" EntitySet="soforautojatabla" />
+          </AssociationSet>
+          <AssociationSet Name="soforautojatabla_ibfk_1" Association="Self.soforautojatabla_ibfk_1">
+            <End Role="felhtabla" EntitySet="felhtabla" />
+            <End Role="soforautojatabla" EntitySet="soforautojatabla" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="autokModelDBStoreContainer" CdmEntityContainer="autokContext">
+          <EntitySetMapping Name="autoktabla">
+            <EntityTypeMapping TypeName="autokModelDB.autoktabla">
+              <MappingFragment StoreEntitySet="autoktabla">
+                <ScalarProperty Name="rendszam" ColumnName="rendszam" />
+                <ScalarProperty Name="alvazszam" ColumnName="alvazszam" />
+                <ScalarProperty Name="km" ColumnName="km" />
+                <ScalarProperty Name="autoradio" ColumnName="autoradio" />
+                <ScalarProperty Name="vontatokotel" ColumnName="vontatokotel" />
+                <ScalarProperty Name="bikakabel" ColumnName="bikakabel" />
+                <ScalarProperty Name="mentodoboz" ColumnName="mentodoboz" />
+                <ScalarProperty Name="gyartmany" ColumnName="gyartmany" />
+                <ScalarProperty Name="tipus" ColumnName="tipus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="felhtabla">
+            <EntityTypeMapping TypeName="autokModelDB.felhtabla">
+              <MappingFragment StoreEntitySet="felhtabla">
+                <ScalarProperty Name="idFelh" ColumnName="idFelh" />
+                <ScalarProperty Name="vezetekNev" ColumnName="vezetekNev" />
+                <ScalarProperty Name="keresztNev" ColumnName="keresztNev" />
+                <ScalarProperty Name="varos" ColumnName="varos" />
+                <ScalarProperty Name="utcaHsz" ColumnName="utcaHsz" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="belepesNev" ColumnName="belepesNev" />
+                <ScalarProperty Name="belepesJelszo" ColumnName="belepesJelszo" />
+                <ScalarProperty Name="soforE" ColumnName="soforE" />
+                <ScalarProperty Name="adminE" ColumnName="adminE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="muszakiallapottabla">
+            <EntityTypeMapping TypeName="autokModelDB.muszakiallapottabla">
+              <MappingFragment StoreEntitySet="muszakiallapottabla">
+                <ScalarProperty Name="idmuszakiAllapot" ColumnName="idmuszakiAllapot" />
+                <ScalarProperty Name="rendszamHOZ" ColumnName="rendszamHOZ" />
+                <ScalarProperty Name="matricaMegyei" ColumnName="matricaMegyei" />
+                <ScalarProperty Name="matricaOrszagos" ColumnName="matricaOrszagos" />
+                <ScalarProperty Name="teligumi" ColumnName="teligumi" />
+                <ScalarProperty Name="nyarigumi" ColumnName="nyarigumi" />
+                <ScalarProperty Name="muszakiErv" ColumnName="muszakiErv" />
+                <ScalarProperty Name="biztosErv" ColumnName="biztosErv" />
+                <ScalarProperty Name="evjarat" ColumnName="evjarat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="soforautojatabla">
+            <EntityTypeMapping TypeName="autokModelDB.soforautojatabla">
+              <MappingFragment StoreEntitySet="soforautojatabla">
+                <ScalarProperty Name="idsoforAutoja" ColumnName="idsoforAutoja" />
+                <ScalarProperty Name="idfelh" ColumnName="idfelh" />
+                <ScalarProperty Name="rendszam" ColumnName="rendszam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="szervizkonyvtabla">
+            <EntityTypeMapping TypeName="autokModelDB.szervizkonyvtabla">
+              <MappingFragment StoreEntitySet="szervizkonyvtabla">
+                <ScalarProperty Name="idszervizkonyv" ColumnName="idszervizkonyv" />
+                <ScalarProperty Name="rendszamHOZ" ColumnName="rendszamHOZ" />
+                <ScalarProperty Name="idopont" ColumnName="idopont" />
+                <ScalarProperty Name="leiras" ColumnName="leiras" />
+                <ScalarProperty Name="cascoE" ColumnName="cascoE" />
+                <ScalarProperty Name="biztositasE" ColumnName="biztositasE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
