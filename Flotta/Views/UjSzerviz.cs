@@ -15,6 +15,7 @@ namespace Flotta.Views
         public UjSzerviz()
         {
             InitializeComponent();
+            dateTimePicker1.Value = DateTime.Now;
         }
 
         private void buttonVissza_Click(object sender, EventArgs e)
@@ -23,6 +24,18 @@ namespace Flotta.Views
             Hide();
             szf.ShowDialog();
             Close();
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            textBoxRendsz.Text = null;
+            textBoxLeiras.Text = null;
+            dateTimePicker1.Value = DateTime.Now;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

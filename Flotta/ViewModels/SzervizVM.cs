@@ -10,8 +10,6 @@ namespace Flotta.ViewModels
 
     public class SzervizVM
     {
-        //public autoktabla at { get; set;}
-        //public felhtabla  fh {get; set; }
         string rendszam;
         int felhId;
 

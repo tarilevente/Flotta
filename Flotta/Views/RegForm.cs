@@ -55,7 +55,7 @@ namespace Flotta.Views
 
         private void buttonKilep_Click(object sender, EventArgs e)
         {
-            var logF = new loginForm();
+            var logF = new LoginForm();
             Hide();
             logF.ShowDialog();
             this.Close();

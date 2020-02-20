@@ -1,6 +1,6 @@
 ﻿namespace Flotta.Views
 {
-    partial class loginForm
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,8 +38,10 @@
             this.labelFelh = new System.Windows.Forms.Label();
             this.buttonReg = new System.Windows.Forms.Button();
             this.buttonKilep = new System.Windows.Forms.Button();
+            this.errorProviderDBError = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLogin)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDBError)).BeginInit();
             this.SuspendLayout();
             // 
             // errorProviderLogin
@@ -146,7 +148,11 @@
             this.buttonKilep.UseVisualStyleBackColor = false;
             this.buttonKilep.Click += new System.EventHandler(this.buttonKilep_Click_1);
             // 
-            // loginForm
+            // errorProviderDBError
+            // 
+            this.errorProviderDBError.ContainerControl = this;
+            // 
+            // LoginForm
             // 
             this.AcceptButton = this.buttonBelep;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -156,12 +162,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.Name = "loginForm";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Belépés";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLogin)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDBError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -176,5 +183,6 @@
         private System.Windows.Forms.Label labelFelh;
         private System.Windows.Forms.Button buttonReg;
         private System.Windows.Forms.Button buttonKilep;
+        private System.Windows.Forms.ErrorProvider errorProviderDBError;
     }
 }

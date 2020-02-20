@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Flotta.Presenters;
+using Flotta.Properties;
+using Flotta.ViewInterfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,16 +13,24 @@ using System.Windows.Forms;
 
 namespace Flotta.Views
 {
-    public partial class MainWindow : Form
+    public partial class MainWindow : Form, IMainWindow
     {
+        private MainPresenter presenter;
+
+        public string ErrorMessageDB { set => errorProviderDBError.SetError(buttonKilepes,value) ; }
         private int childFormNumber = 0;
 
         public MainWindow()
         {
             InitializeComponent();
+            presenter = new MainPresenter(this);
+            //háttérkép beállítása
+            Image myImage = new Bitmap(Flotta.Properties.Resources.MainImage);
+            pictureBox1.Image = myImage;
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
+        private void ShowNewForm(object sender, EventArgs e) //ez mi?
         {
             Form childForm = new Form();
             childForm.MdiParent = this;
@@ -118,6 +129,7 @@ namespace Flotta.Views
         private void buttonKilepes_Click(object sender, EventArgs e)
         {
             this.Close();
+            Environment.Exit(0);
         }
 
         private void toolStripMenuItemFooldal_Click(object sender, EventArgs e)
@@ -127,42 +139,78 @@ namespace Flotta.Views
 
         private void toolStripMenuItemSzervizek_Click(object sender, EventArgs e)
         {
-            var szf = new SzervizekForm();
-            Hide();
-            szf.ShowDialog();
-            Close();
+            if (presenter.ConnectionExists())
+            {
+                var szf = new SzervizekForm();
+                Hide();
+                szf.ShowDialog();
+                Close();
+            }
+            else
+            {
+                errorProviderDBError2.SetError(buttonKilepes, Resources.DBError);
+            }
         }
 
         private void toolStripMenuItemMuszaki_Click(object sender, EventArgs e)
         {
-            var me = new MuszakiForm();
-            Hide();
-            me.ShowDialog();
-            Close();
+            if (presenter.ConnectionExists())
+            {
+                var me = new MuszakiForm();
+                Hide();
+                me.ShowDialog();
+                Close();
+            }
+            else
+            {
+                errorProviderDBError2.SetError(buttonKilepes, Resources.DBError);
+            }
         }
 
         private void toolStripMenuItemGepjarmuvek_Click(object sender, EventArgs e)
         {
-            var gf = new GepjarmuvekAdminForm();
-            Hide();
-            gf.ShowDialog();
-            Close();
+            if (presenter.ConnectionExists())
+            {
+                var gf = new GepjarmuvekAdminForm();
+                Hide();
+                gf.ShowDialog();
+                Close();
+            }
+            else
+            {
+                errorProviderDBError2.SetError(buttonKilepes, Resources.DBError);
+            }
         }
 
         private void toolStripMenuItemFelszerelesek_Click(object sender, EventArgs e)
         {
-            var fe = new FelszereltsegEllForm();
-            Hide();
-            fe.ShowDialog();
-            Close();
+            if (presenter.ConnectionExists())
+            {
+                var fe = new AttekintesForm();
+                Hide();
+                fe.ShowDialog();
+                Close();
+            }
+            else
+            {
+                errorProviderDBError2.SetError(buttonKilepes, Resources.DBError);
+            }
         }
 
         private void toolStripMenuItemProfilom_Click(object sender, EventArgs e)
         {
-            var pk = new ProfilAdminForm();
-            Hide();
-            pk.ShowDialog();
-            Close();
+            if (presenter.ConnectionExists())
+            {
+                var pk = new ProfilAdminForm();
+                Hide();
+                pk.ShowDialog();
+                Close();
+            }
+            else
+            {
+                errorProviderDBError2.SetError(buttonKilepes, Resources.DBError);
+            }
+
         }
     }
 }

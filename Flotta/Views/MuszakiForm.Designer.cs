@@ -251,6 +251,7 @@
             this.MinimumSize = new System.Drawing.Size(1030, 605);
             this.Name = "MuszakiForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flotta - Műszaki esedékesség";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

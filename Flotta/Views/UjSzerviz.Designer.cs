@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxLeiras = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonVissza = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
@@ -36,33 +35,23 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxRendsz = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.radioButtonCasco = new System.Windows.Forms.RadioButton();
             this.radioButtonKot = new System.Windows.Forms.RadioButton();
             this.label15 = new System.Windows.Forms.Label();
+            this.textBoxLeiras = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBoxLeiras
-            // 
-            this.listBoxLeiras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listBoxLeiras.FormattingEnabled = true;
-            this.listBoxLeiras.ItemHeight = 20;
-            this.listBoxLeiras.Location = new System.Drawing.Point(5, 112);
-            this.listBoxLeiras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxLeiras.Name = "listBoxLeiras";
-            this.listBoxLeiras.Size = new System.Drawing.Size(701, 364);
-            this.listBoxLeiras.TabIndex = 1;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxLeiras);
             this.groupBox1.Controls.Add(this.buttonVissza);
             this.groupBox1.Controls.Add(this.buttonReset);
             this.groupBox1.Controls.Add(this.buttonFelv);
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Controls.Add(this.listBoxLeiras);
             this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
@@ -70,12 +59,13 @@
             this.groupBox1.Size = new System.Drawing.Size(713, 530);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // buttonVissza
             // 
             this.buttonVissza.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonVissza.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonVissza.Location = new System.Drawing.Point(581, 480);
+            this.buttonVissza.Location = new System.Drawing.Point(570, 482);
             this.buttonVissza.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonVissza.Name = "buttonVissza";
             this.buttonVissza.Size = new System.Drawing.Size(125, 48);
@@ -94,6 +84,7 @@
             this.buttonReset.TabIndex = 4;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // buttonFelv
             // 
@@ -115,7 +106,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxRendsz, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.radioButtonCasco, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.radioButtonKot, 2, 1);
@@ -148,14 +139,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Időpont";
             // 
-            // textBox1
+            // textBoxRendsz
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(176, 2);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(315, 28);
-            this.textBox1.TabIndex = 5;
+            this.textBoxRendsz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxRendsz.Location = new System.Drawing.Point(176, 2);
+            this.textBoxRendsz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxRendsz.Name = "textBoxRendsz";
+            this.textBoxRendsz.Size = new System.Drawing.Size(315, 28);
+            this.textBoxRendsz.TabIndex = 5;
             // 
             // dateTimePicker1
             // 
@@ -175,13 +166,13 @@
             this.radioButtonCasco.Name = "radioButtonCasco";
             this.radioButtonCasco.Size = new System.Drawing.Size(84, 28);
             this.radioButtonCasco.TabIndex = 9;
-            this.radioButtonCasco.TabStop = true;
             this.radioButtonCasco.Text = "Casco";
             this.radioButtonCasco.UseVisualStyleBackColor = true;
             // 
             // radioButtonKot
             // 
             this.radioButtonKot.AutoSize = true;
+            this.radioButtonKot.Checked = true;
             this.radioButtonKot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.radioButtonKot.Location = new System.Drawing.Point(498, 44);
             this.radioButtonKot.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -202,6 +193,14 @@
             this.label15.TabIndex = 14;
             this.label15.Text = "Új szerviz felvitel";
             // 
+            // textBoxLeiras
+            // 
+            this.textBoxLeiras.Location = new System.Drawing.Point(8, 113);
+            this.textBoxLeiras.Multiline = true;
+            this.textBoxLeiras.Name = "textBoxLeiras";
+            this.textBoxLeiras.Size = new System.Drawing.Size(687, 362);
+            this.textBoxLeiras.TabIndex = 6;
+            // 
             // UjSzerviz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -217,6 +216,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flotta - Új szerviz";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -225,13 +225,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBoxLeiras;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxRendsz;
         private System.Windows.Forms.Button buttonVissza;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonFelv;
@@ -239,5 +237,6 @@
         private System.Windows.Forms.RadioButton radioButtonCasco;
         private System.Windows.Forms.RadioButton radioButtonKot;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxLeiras;
     }
 }

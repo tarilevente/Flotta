@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flotta.ViewInterfaces
+namespace Flotta.Repositories
 {
-    interface IFelszereltsegEllForm
+    class AttekintesRepository
     {
     }
 }

@@ -29,7 +29,7 @@ namespace Flotta.Presenters
         {
             if (!ConnectionExist())
             {
-                view.ErrorMessage = Resources.AdatHiba;
+                view.ErrorMessageDB = Resources.DBError;
             }
             else //ha van ab-kapcsolat:
             {
@@ -44,7 +44,7 @@ namespace Flotta.Presenters
                 }
                 else
                 {
-                    view.ErrorMessage = Resources.BelepesHiba;
+                    view.ErrorMessageLogin = Resources.BelepesHiba;
                 }
             }
 

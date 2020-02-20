@@ -81,7 +81,7 @@ namespace Flotta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adatbázishoz kapcsolódás sikertelen.
+        ///   Looks up a localized string similar to ADAT HIBA.
         /// </summary>
         internal static string AdatHiba {
             get {
@@ -169,6 +169,15 @@ namespace Flotta.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nincs kapcsolat az adatbázissal!.
+        /// </summary>
+        internal static string DBError {
+            get {
+                return ResourceManager.GetString("DBError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap design {
@@ -249,6 +258,15 @@ namespace Flotta.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ilyen indexű elem nincs a listában!.
+        /// </summary>
+        internal static string IndexIsmeretlen {
+            get {
+                return ResourceManager.GetString("IndexIsmeretlen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap information_architecture {
@@ -269,11 +287,30 @@ namespace Flotta.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nem tudom kiiktatni innen.
+        /// </summary>
+        internal static string IsmeretlenHibaPresenter {
+            get {
+                return ResourceManager.GetString("IsmeretlenHibaPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap layout {
             get {
                 object obj = ResourceManager.GetObject("layout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainImage {
+            get {
+                object obj = ResourceManager.GetObject("MainImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flotta.ViewInterfaces
+namespace Flotta.Presenters
 {
-    interface IMainWindow
+    class MuszakiPresenter
     {
-        string ErrorMessageDB { set; }
-
-
     }
 }

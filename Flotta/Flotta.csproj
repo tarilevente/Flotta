@@ -63,19 +63,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="autokDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>autokDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\AttekintesPresenter.cs" />
+    <Compile Include="Presenters\GepjarmuvekAdminPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\MuszakiPresenter.cs" />
+    <Compile Include="Presenters\ProfilAdminPresenter.cs" />
     <Compile Include="Presenters\RegFormPresenter.cs" />
+    <Compile Include="Presenters\SzervizekPresenter.cs" />
+    <Compile Include="Presenters\UjAutoPresenter.cs" />
+    <Compile Include="Presenters\UjSzervizPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\AutokModel.Context.cs">
@@ -108,7 +111,17 @@
     <Compile Include="Models\szervizkonyvtabla.cs">
       <DependentUpon>AutokModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewInterfaces\IFelszereltsegEllForm.cs" />
+    <Compile Include="Repositories\AttekintesRepository.cs" />
+    <Compile Include="Repositories\LoginRepository.cs" />
+    <Compile Include="Repositories\GepjarmuvekAdminRepository.cs" />
+    <Compile Include="Repositories\MainRepository.cs" />
+    <Compile Include="Repositories\MuszakiRepository.cs" />
+    <Compile Include="Repositories\ProfilAdminRepository.cs" />
+    <Compile Include="Repositories\RegFormRepository.cs" />
+    <Compile Include="Repositories\SzervizekRepository.cs" />
+    <Compile Include="Repositories\UjAutoRepository.cs" />
+    <Compile Include="Repositories\UjSzervizRepository.cs" />
+    <Compile Include="ViewInterfaces\IAttekintesForm.cs" />
     <Compile Include="ViewInterfaces\IGepjarmuvekAdminForm.cs" />
     <Compile Include="ViewInterfaces\ILoginForm.cs" />
     <Compile Include="ViewInterfaces\IMainWindow.cs" />
@@ -119,11 +132,11 @@
     <Compile Include="ViewInterfaces\IUjAutoForm.cs" />
     <Compile Include="ViewInterfaces\IUjSzerviz.cs" />
     <Compile Include="ViewModels\SzervizVM.cs" />
-    <Compile Include="Views\FelszereltsegEllForm.cs">
+    <Compile Include="Views\AttekintesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FelszereltsegEllForm.Designer.cs">
-      <DependentUpon>FelszereltsegEllForm.cs</DependentUpon>
+    <Compile Include="Views\AttekintesForm.Designer.cs">
+      <DependentUpon>AttekintesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\GepjarmuvekAdminForm.cs">
       <SubType>Form</SubType>
@@ -189,8 +202,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\FelszereltsegEllForm.resx">
-      <DependentUpon>FelszereltsegEllForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\AttekintesForm.resx">
+      <DependentUpon>AttekintesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\GepjarmuvekAdminForm.resx">
       <DependentUpon>GepjarmuvekAdminForm.cs</DependentUpon>
@@ -219,17 +232,6 @@
     <EmbeddedResource Include="Views\UjSzerviz.resx">
       <DependentUpon>UjSzerviz.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="autokDataSet.xsc">
-      <DependentUpon>autokDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="autokDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>autokDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="autokDataSet.xss">
-      <DependentUpon>autokDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -251,9 +253,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Models\AutokModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -265,6 +265,10 @@
       <DependentUpon>AutokModel.edmx</DependentUpon>
       <LastGenOutput>AutokModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\MainImage.bmp" />
+    <None Include="Resources\VPLOGO_ver3.png" />
+    <None Include="Resources\fiat_inside_karikatura_kisebb.png" />
+    <None Include="Resources\MainImage.png" />
     <Content Include="SQL\autok.sql" />
     <None Include="Resources\analytics.png" />
     <None Include="Resources\adaptive-design.png" />

@@ -121,9 +121,6 @@
   <data name="adaptive_design" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\adaptive-design.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AdatHiba" xml:space="preserve">
-    <value>Adatbázishoz kapcsolódás sikertelen</value>
-  </data>
   <data name="analytics" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\analytics.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -252,5 +249,20 @@
   </data>
   <data name="wireframes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wireframes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MainImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MainImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DBError" xml:space="preserve">
+    <value>Nincs kapcsolat az adatbázissal!</value>
+  </data>
+  <data name="AdatHiba" xml:space="preserve">
+    <value>ADAT HIBA</value>
+  </data>
+  <data name="IndexIsmeretlen" xml:space="preserve">
+    <value>Ilyen indexű elem nincs a listában!</value>
+  </data>
+  <data name="IsmeretlenHibaPresenter" xml:space="preserve">
+    <value>Nem tudom kiiktatni innen</value>
   </data>
 </root>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBoxRendszamok = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,10 +49,8 @@
             this.textBoxIdopont = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBoxIdopont = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.listBoxLeiras = new System.Windows.Forms.ListBox();
-            this.buttonMehet = new System.Windows.Forms.Button();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonKeres = new System.Windows.Forms.Button();
+            this.tableLayoutPanelNav = new System.Windows.Forms.TableLayoutPanel();
             this.buttonFirst = new System.Windows.Forms.Button();
             this.buttonPrevious = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
@@ -59,13 +58,18 @@
             this.labelpage = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonUj = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxKeres = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.buttonTorles = new System.Windows.Forms.Button();
+            this.errorProviderErrorDB = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderKeres = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxLeiras = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanelNav.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderErrorDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderKeres)).BeginInit();
             this.SuspendLayout();
             // 
             // listBoxRendszamok
@@ -73,10 +77,13 @@
             this.listBoxRendszamok.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxRendszamok.FormattingEnabled = true;
             this.listBoxRendszamok.ItemHeight = 25;
-            this.listBoxRendszamok.Location = new System.Drawing.Point(12, 76);
+            this.listBoxRendszamok.Location = new System.Drawing.Point(4, 81);
             this.listBoxRendszamok.Name = "listBoxRendszamok";
-            this.listBoxRendszamok.Size = new System.Drawing.Size(158, 479);
+            this.listBoxRendszamok.Size = new System.Drawing.Size(166, 479);
             this.listBoxRendszamok.TabIndex = 2;
+            this.listBoxRendszamok.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxRendszamok_MouseClick);
+            this.listBoxRendszamok.SelectedIndexChanged += new System.EventHandler(this.listBoxRendszamok_SelectedIndexChanged);
+            this.listBoxRendszamok.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBoxRendszamok_KeyUp);
             // 
             // tableLayoutPanel1
             // 
@@ -147,6 +154,7 @@
             this.textBoxRendszam.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxRendszam.Location = new System.Drawing.Point(3, 38);
             this.textBoxRendszam.Name = "textBoxRendszam";
+            this.textBoxRendszam.ReadOnly = true;
             this.textBoxRendszam.Size = new System.Drawing.Size(198, 30);
             this.textBoxRendszam.TabIndex = 4;
             // 
@@ -155,6 +163,7 @@
             this.textBoxGyartmany.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxGyartmany.Location = new System.Drawing.Point(208, 38);
             this.textBoxGyartmany.Name = "textBoxGyartmany";
+            this.textBoxGyartmany.ReadOnly = true;
             this.textBoxGyartmany.Size = new System.Drawing.Size(202, 30);
             this.textBoxGyartmany.TabIndex = 5;
             // 
@@ -163,6 +172,7 @@
             this.textBoxTipus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxTipus.Location = new System.Drawing.Point(418, 38);
             this.textBoxTipus.Name = "textBoxTipus";
+            this.textBoxTipus.ReadOnly = true;
             this.textBoxTipus.Size = new System.Drawing.Size(198, 30);
             this.textBoxTipus.TabIndex = 6;
             // 
@@ -171,6 +181,7 @@
             this.textBoxKm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxKm.Location = new System.Drawing.Point(624, 38);
             this.textBoxKm.Name = "textBoxKm";
+            this.textBoxKm.ReadOnly = true;
             this.textBoxKm.Size = new System.Drawing.Size(203, 30);
             this.textBoxKm.TabIndex = 7;
             // 
@@ -208,6 +219,7 @@
             this.textBoxMuszaki.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxMuszaki.Location = new System.Drawing.Point(210, 5);
             this.textBoxMuszaki.Name = "textBoxMuszaki";
+            this.textBoxMuszaki.ReadOnly = true;
             this.textBoxMuszaki.Size = new System.Drawing.Size(201, 30);
             this.textBoxMuszaki.TabIndex = 2;
             // 
@@ -226,6 +238,7 @@
             this.textBoxBizt.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxBizt.Location = new System.Drawing.Point(624, 5);
             this.textBoxBizt.Name = "textBoxBizt";
+            this.textBoxBizt.ReadOnly = true;
             this.textBoxBizt.Size = new System.Drawing.Size(203, 30);
             this.textBoxBizt.TabIndex = 3;
             // 
@@ -263,6 +276,7 @@
             this.textBoxIdopont.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxIdopont.Location = new System.Drawing.Point(210, 12);
             this.textBoxIdopont.Name = "textBoxIdopont";
+            this.textBoxIdopont.ReadOnly = true;
             this.textBoxIdopont.Size = new System.Drawing.Size(201, 30);
             this.textBoxIdopont.TabIndex = 2;
             // 
@@ -278,67 +292,45 @@
             // 
             // comboBoxIdopont
             // 
+            this.comboBoxIdopont.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBoxIdopont.FormattingEnabled = true;
-            this.comboBoxIdopont.Location = new System.Drawing.Point(624, 3);
+            this.comboBoxIdopont.Location = new System.Drawing.Point(624, 11);
             this.comboBoxIdopont.Name = "comboBoxIdopont";
             this.comboBoxIdopont.Size = new System.Drawing.Size(203, 31);
             this.comboBoxIdopont.TabIndex = 4;
+            this.comboBoxIdopont.SelectedIndexChanged += new System.EventHandler(this.comboBoxIdopont_SelectedIndexChanged);
             // 
-            // tableLayoutPanel4
+            // buttonKeres
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.Controls.Add(this.listBoxLeiras, 0, 0);
-            this.tableLayoutPanel4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(176, 216);
-            this.tableLayoutPanel4.MaximumSize = new System.Drawing.Size(1030, 605);
-            this.tableLayoutPanel4.MinimumSize = new System.Drawing.Size(1030, 605);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.06098F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1030, 605);
-            this.tableLayoutPanel4.TabIndex = 6;
+            this.buttonKeres.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonKeres.Location = new System.Drawing.Point(4, 43);
+            this.buttonKeres.Name = "buttonKeres";
+            this.buttonKeres.Size = new System.Drawing.Size(166, 33);
+            this.buttonKeres.TabIndex = 7;
+            this.buttonKeres.Text = "Keres";
+            this.buttonKeres.UseVisualStyleBackColor = true;
+            this.buttonKeres.Click += new System.EventHandler(this.buttonKeres_Click);
             // 
-            // listBoxLeiras
+            // tableLayoutPanelNav
             // 
-            this.listBoxLeiras.FormattingEnabled = true;
-            this.listBoxLeiras.ItemHeight = 23;
-            this.listBoxLeiras.Location = new System.Drawing.Point(3, 3);
-            this.listBoxLeiras.Name = "listBoxLeiras";
-            this.listBoxLeiras.Size = new System.Drawing.Size(824, 257);
-            this.listBoxLeiras.TabIndex = 0;
-            // 
-            // buttonMehet
-            // 
-            this.buttonMehet.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonMehet.Location = new System.Drawing.Point(12, 39);
-            this.buttonMehet.Name = "buttonMehet";
-            this.buttonMehet.Size = new System.Drawing.Size(158, 33);
-            this.buttonMehet.TabIndex = 7;
-            this.buttonMehet.Text = "Keres";
-            this.buttonMehet.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 5;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.buttonFirst, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.buttonPrevious, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.buttonNext, 3, 0);
-            this.tableLayoutPanel5.Controls.Add(this.buttonLast, 4, 0);
-            this.tableLayoutPanel5.Controls.Add(this.labelpage, 2, 0);
-            this.tableLayoutPanel5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(291, 513);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(579, 38);
-            this.tableLayoutPanel5.TabIndex = 8;
+            this.tableLayoutPanelNav.ColumnCount = 5;
+            this.tableLayoutPanelNav.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.tableLayoutPanelNav.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.tableLayoutPanelNav.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.tableLayoutPanelNav.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.tableLayoutPanelNav.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.tableLayoutPanelNav.Controls.Add(this.buttonFirst, 0, 0);
+            this.tableLayoutPanelNav.Controls.Add(this.buttonPrevious, 1, 0);
+            this.tableLayoutPanelNav.Controls.Add(this.buttonNext, 3, 0);
+            this.tableLayoutPanelNav.Controls.Add(this.buttonLast, 4, 0);
+            this.tableLayoutPanelNav.Controls.Add(this.labelpage, 2, 0);
+            this.tableLayoutPanelNav.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tableLayoutPanelNav.Location = new System.Drawing.Point(255, 516);
+            this.tableLayoutPanelNav.Name = "tableLayoutPanelNav";
+            this.tableLayoutPanelNav.RowCount = 1;
+            this.tableLayoutPanelNav.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelNav.Size = new System.Drawing.Size(579, 38);
+            this.tableLayoutPanelNav.TabIndex = 8;
             // 
             // buttonFirst
             // 
@@ -348,6 +340,7 @@
             this.buttonFirst.TabIndex = 0;
             this.buttonFirst.Text = "<<";
             this.buttonFirst.UseVisualStyleBackColor = true;
+            this.buttonFirst.Click += new System.EventHandler(this.buttonFirst_Click);
             // 
             // buttonPrevious
             // 
@@ -357,6 +350,7 @@
             this.buttonPrevious.TabIndex = 0;
             this.buttonPrevious.Text = "<";
             this.buttonPrevious.UseVisualStyleBackColor = true;
+            this.buttonPrevious.Click += new System.EventHandler(this.buttonPrevious_Click);
             // 
             // buttonNext
             // 
@@ -366,6 +360,7 @@
             this.buttonNext.TabIndex = 0;
             this.buttonNext.Text = ">";
             this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonLast
             // 
@@ -375,6 +370,7 @@
             this.buttonLast.TabIndex = 0;
             this.buttonLast.Text = ">>";
             this.buttonLast.UseVisualStyleBackColor = true;
+            this.buttonLast.Click += new System.EventHandler(this.buttonLast_Click);
             // 
             // labelpage
             // 
@@ -401,7 +397,7 @@
             // buttonUj
             // 
             this.buttonUj.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonUj.Location = new System.Drawing.Point(876, 515);
+            this.buttonUj.Location = new System.Drawing.Point(746, 3);
             this.buttonUj.Name = "buttonUj";
             this.buttonUj.Size = new System.Drawing.Size(127, 34);
             this.buttonUj.TabIndex = 10;
@@ -409,13 +405,13 @@
             this.buttonUj.UseVisualStyleBackColor = true;
             this.buttonUj.Click += new System.EventHandler(this.buttonUj_Click);
             // 
-            // textBox1
+            // textBoxKeres
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(12, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 31);
-            this.textBox1.TabIndex = 11;
+            this.textBoxKeres.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxKeres.Location = new System.Drawing.Point(4, 6);
+            this.textBoxKeres.Name = "textBoxKeres";
+            this.textBoxKeres.Size = new System.Drawing.Size(166, 31);
+            this.textBoxKeres.TabIndex = 11;
             // 
             // label9
             // 
@@ -427,18 +423,47 @@
             this.label9.TabIndex = 14;
             this.label9.Text = "Szerviztevékenységek áttekintése";
             // 
+            // buttonTorles
+            // 
+            this.buttonTorles.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonTorles.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonTorles.Location = new System.Drawing.Point(840, 519);
+            this.buttonTorles.Name = "buttonTorles";
+            this.buttonTorles.Size = new System.Drawing.Size(166, 32);
+            this.buttonTorles.TabIndex = 7;
+            this.buttonTorles.Text = "Aktuális törlése";
+            this.buttonTorles.UseVisualStyleBackColor = false;
+            // 
+            // errorProviderErrorDB
+            // 
+            this.errorProviderErrorDB.ContainerControl = this;
+            // 
+            // errorProviderKeres
+            // 
+            this.errorProviderKeres.ContainerControl = this;
+            // 
+            // textBoxLeiras
+            // 
+            this.textBoxLeiras.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxLeiras.Location = new System.Drawing.Point(177, 220);
+            this.textBoxLeiras.Multiline = true;
+            this.textBoxLeiras.Name = "textBoxLeiras";
+            this.textBoxLeiras.Size = new System.Drawing.Size(829, 296);
+            this.textBoxLeiras.TabIndex = 15;
+            // 
             // SzervizekForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 557);
+            this.Controls.Add(this.textBoxLeiras);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxKeres);
             this.Controls.Add(this.buttonUj);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.tableLayoutPanel5);
-            this.Controls.Add(this.buttonMehet);
-            this.Controls.Add(this.tableLayoutPanel4);
+            this.Controls.Add(this.buttonTorles);
+            this.Controls.Add(this.tableLayoutPanelNav);
+            this.Controls.Add(this.buttonKeres);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -456,9 +481,10 @@
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanelNav.ResumeLayout(false);
+            this.tableLayoutPanelNav.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderErrorDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderKeres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,10 +511,8 @@
         private System.Windows.Forms.TextBox textBoxIdopont;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBoxIdopont;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.ListBox listBoxLeiras;
-        private System.Windows.Forms.Button buttonMehet;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Button buttonKeres;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelNav;
         private System.Windows.Forms.Button buttonFirst;
         private System.Windows.Forms.Button buttonPrevious;
         private System.Windows.Forms.Button buttonNext;
@@ -496,7 +520,11 @@
         private System.Windows.Forms.Label labelpage;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonUj;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxKeres;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button buttonTorles;
+        private System.Windows.Forms.ErrorProvider errorProviderErrorDB;
+        private System.Windows.Forms.ErrorProvider errorProviderKeres;
+        private System.Windows.Forms.TextBox textBoxLeiras;
     }
 }

@@ -8,7 +8,8 @@ namespace Flotta.ViewInterfaces
 {
     interface ILoginForm
     {
-        string ErrorMessage { set; }
+        string ErrorMessageDB { set; }
+        string ErrorMessageLogin { set; }
         string UserName { get; }
         string Password { get; }
     }

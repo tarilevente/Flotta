@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemFooldal = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSzervizek = new System.Windows.Forms.ToolStripMenuItem();
@@ -35,9 +37,16 @@
             this.toolStripMenuItemGepjarmuvek = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemFelszerelesek = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemProfilom = new System.Windows.Forms.ToolStripMenuItem();
-            this.szervizkonyvtablaTableAdapter = new Flotta.autokDataSetTableAdapters.szervizkonyvtablaTableAdapter();
             this.buttonKilepes = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.errorProviderDBError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderDBError2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDBError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDBError2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -100,14 +109,11 @@
             this.toolStripMenuItemProfilom.Text = "Profilkezelés";
             this.toolStripMenuItemProfilom.Click += new System.EventHandler(this.toolStripMenuItemProfilom_Click);
             // 
-            // szervizkonyvtablaTableAdapter
-            // 
-            this.szervizkonyvtablaTableAdapter.ClearBeforeFill = true;
-            // 
             // buttonKilepes
             // 
+            this.buttonKilepes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonKilepes.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonKilepes.Location = new System.Drawing.Point(857, 481);
+            this.buttonKilepes.Location = new System.Drawing.Point(854, 473);
             this.buttonKilepes.Name = "buttonKilepes";
             this.buttonKilepes.Size = new System.Drawing.Size(112, 45);
             this.buttonKilepes.TabIndex = 10;
@@ -115,19 +121,53 @@
             this.buttonKilepes.UseVisualStyleBackColor = true;
             this.buttonKilepes.Click += new System.EventHandler(this.buttonKilepes_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonKilepes, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 36);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1012, 522);
+            this.tableLayoutPanel1.TabIndex = 12;
+            // 
+            // pictureBox1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1006, 452);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+            // errorProviderDBError
+            // 
+            this.errorProviderDBError.ContainerControl = this;
+            this.errorProviderDBError.Tag = "";
+            // 
+            // errorProviderDBError2
+            // 
+            this.errorProviderDBError2.ContainerControl = this;
+            this.errorProviderDBError2.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProviderDBError2.Icon")));
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 558);
-            this.Controls.Add(this.buttonKilepes);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1030, 605);
-            this.MinimumSize = new System.Drawing.Size(1030, 605);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flotta - Főoldal";
@@ -135,6 +175,10 @@
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDBError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDBError2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,7 +187,6 @@
 
 
         private System.Windows.Forms.MenuStrip menuStrip;
-        private autokDataSetTableAdapters.szervizkonyvtablaTableAdapter szervizkonyvtablaTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFooldal;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSzervizek;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMuszaki;
@@ -151,6 +194,10 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFelszerelesek;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemProfilom;
         private System.Windows.Forms.Button buttonKilepes;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ErrorProvider errorProviderDBError;
+        private System.Windows.Forms.ErrorProvider errorProviderDBError2;
     }
 }
 

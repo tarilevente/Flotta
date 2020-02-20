@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace Flotta.Views
 {
-    public partial class loginForm : Form, ILoginForm
+    public partial class LoginForm : Form, ILoginForm
     {
         private LoginPresenter presenter; //Presentert példányosít!!
 
-        public loginForm() //ki fogja példányosítani a loginForm-ot?  -- háát a presenter!
+        public LoginForm() //ki fogja példányosítani a loginForm-ot?  -- háát a presenter!
         {
             InitializeComponent();
             presenter = new LoginPresenter(this); //ez miért kell? -- Ha létrehozol egy view-t, akkor a prezentert is példányosítja, és a létrehozott view lesz a prezenter konstruktorában
@@ -24,8 +24,10 @@ namespace Flotta.Views
 
 
         //ez az Interface létrehozásakor generálódik, melyet később átírtunk. Ha módosítom az interface-t, akkor újra implementáljuk.
-        public string ErrorMessage { //ezek a változók az interface-ben is szerepelnek SET/GET-el
+        public string ErrorMessageLogin { //ezek a változók az interface-ben is szerepelnek SET/GET-el
             set => errorProviderLogin.SetError(textBoxJelsz, value); } // errort kiküldi az Errorprovidernek
+        public string ErrorMessageDB {
+            set => errorProviderDBError.SetError(buttonBelep, value); }
         public string UserName { get => textBoxFelh.Text; } //kiolvassa a username-et
         public string Password {get => textBoxJelsz.Text; } //kiolvassa a Passwordot
 

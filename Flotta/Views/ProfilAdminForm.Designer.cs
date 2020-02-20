@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonFooldal = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonMod = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,16 +51,23 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxAutom = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.buttonMehet = new System.Windows.Forms.Button();
             this.listBoxNevek = new System.Windows.Forms.ListBox();
             this.textBoxKeres = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonFirst = new System.Windows.Forms.Button();
-            this.buttonPrevious = new System.Windows.Forms.Button();
-            this.buttonNext = new System.Windows.Forms.Button();
-            this.buttonLast = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.labelpage = new System.Windows.Forms.Label();
+            this.buttonLast = new System.Windows.Forms.Button();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.buttonPrevious = new System.Windows.Forms.Button();
+            this.buttonFirst = new System.Windows.Forms.Button();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonTorles = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +76,7 @@
             // 
             this.buttonFooldal.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonFooldal.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonFooldal.Location = new System.Drawing.Point(784, 513);
+            this.buttonFooldal.Location = new System.Drawing.Point(864, 509);
             this.buttonFooldal.Name = "buttonFooldal";
             this.buttonFooldal.Size = new System.Drawing.Size(126, 38);
             this.buttonFooldal.TabIndex = 8;
@@ -78,27 +84,16 @@
             this.buttonFooldal.UseVisualStyleBackColor = false;
             this.buttonFooldal.Click += new System.EventHandler(this.buttonKilep_Click);
             // 
-            // button1
+            // buttonMod
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(425, 510);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 38);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Visszaállít";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonReset
-            // 
-            this.buttonReset.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonReset.Location = new System.Drawing.Point(272, 510);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(126, 38);
-            this.buttonReset.TabIndex = 10;
-            this.buttonReset.Text = "Módosít";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            this.buttonMod.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonMod.Location = new System.Drawing.Point(630, 513);
+            this.buttonMod.Name = "buttonMod";
+            this.buttonMod.Size = new System.Drawing.Size(126, 38);
+            this.buttonMod.TabIndex = 10;
+            this.buttonMod.Text = "Módosít";
+            this.buttonMod.UseVisualStyleBackColor = true;
+            this.buttonMod.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -128,6 +123,11 @@
             this.tableLayoutPanel1.Controls.Add(this.label10, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.textBoxAutom, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label12, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 3, 9);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(272, 55);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -352,11 +352,66 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Vezetéknév";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(304, 40);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 38);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(662, 40);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(30, 38);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(304, 280);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 38);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(304, 360);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(30, 38);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "*";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(662, 360);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(30, 38);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "*";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI Black", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.Location = new System.Drawing.Point(488, 5);
+            this.label11.Location = new System.Drawing.Point(484, -1);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(227, 45);
             this.label11.TabIndex = 11;
@@ -365,7 +420,7 @@
             // buttonMehet
             // 
             this.buttonMehet.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonMehet.Location = new System.Drawing.Point(15, 36);
+            this.buttonMehet.Location = new System.Drawing.Point(15, 49);
             this.buttonMehet.Name = "buttonMehet";
             this.buttonMehet.Size = new System.Drawing.Size(240, 36);
             this.buttonMehet.TabIndex = 14;
@@ -377,18 +432,81 @@
             this.listBoxNevek.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxNevek.FormattingEnabled = true;
             this.listBoxNevek.ItemHeight = 28;
-            this.listBoxNevek.Location = new System.Drawing.Point(16, 78);
+            this.listBoxNevek.Location = new System.Drawing.Point(16, 91);
             this.listBoxNevek.Name = "listBoxNevek";
-            this.listBoxNevek.Size = new System.Drawing.Size(239, 424);
+            this.listBoxNevek.Size = new System.Drawing.Size(238, 368);
             this.listBoxNevek.TabIndex = 13;
             // 
             // textBoxKeres
             // 
-            this.textBoxKeres.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxKeres.Location = new System.Drawing.Point(16, 5);
+            this.textBoxKeres.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxKeres.Location = new System.Drawing.Point(16, 12);
             this.textBoxKeres.Name = "textBoxKeres";
-            this.textBoxKeres.Size = new System.Drawing.Size(239, 30);
+            this.textBoxKeres.Size = new System.Drawing.Size(239, 31);
             this.textBoxKeres.TabIndex = 15;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.BackColor = System.Drawing.SystemColors.Control;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button3.Location = new System.Drawing.Point(272, 512);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(334, 38);
+            this.button3.TabIndex = 41;
+            this.button3.Text = "Visszaállítás a jelenlegi állapotra";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // labelpage
+            // 
+            this.labelpage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelpage.AutoSize = true;
+            this.labelpage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelpage.Location = new System.Drawing.Point(102, 9);
+            this.labelpage.Name = "labelpage";
+            this.labelpage.Size = new System.Drawing.Size(35, 23);
+            this.labelpage.TabIndex = 1;
+            this.labelpage.Text = "0/0";
+            // 
+            // buttonLast
+            // 
+            this.buttonLast.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonLast.Location = new System.Drawing.Point(195, 3);
+            this.buttonLast.Name = "buttonLast";
+            this.buttonLast.Size = new System.Drawing.Size(43, 34);
+            this.buttonLast.TabIndex = 0;
+            this.buttonLast.Text = ">>";
+            this.buttonLast.UseVisualStyleBackColor = true;
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonNext.Location = new System.Drawing.Point(147, 3);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(39, 34);
+            this.buttonNext.TabIndex = 0;
+            this.buttonNext.Text = ">";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            // 
+            // buttonPrevious
+            // 
+            this.buttonPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonPrevious.Location = new System.Drawing.Point(51, 3);
+            this.buttonPrevious.Name = "buttonPrevious";
+            this.buttonPrevious.Size = new System.Drawing.Size(39, 34);
+            this.buttonPrevious.TabIndex = 0;
+            this.buttonPrevious.Text = "<";
+            this.buttonPrevious.UseVisualStyleBackColor = true;
+            // 
+            // buttonFirst
+            // 
+            this.buttonFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonFirst.Location = new System.Drawing.Point(3, 3);
+            this.buttonFirst.Name = "buttonFirst";
+            this.buttonFirst.Size = new System.Drawing.Size(39, 34);
+            this.buttonFirst.TabIndex = 0;
+            this.buttonFirst.Text = "<<";
+            this.buttonFirst.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
@@ -403,77 +521,38 @@
             this.tableLayoutPanel5.Controls.Add(this.buttonNext, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.buttonLast, 4, 0);
             this.tableLayoutPanel5.Controls.Add(this.labelpage, 2, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(12, 510);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(16, 465);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(243, 41);
             this.tableLayoutPanel5.TabIndex = 16;
             // 
-            // buttonFirst
+            // buttonTorles
             // 
-            this.buttonFirst.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonFirst.Location = new System.Drawing.Point(3, 3);
-            this.buttonFirst.Name = "buttonFirst";
-            this.buttonFirst.Size = new System.Drawing.Size(39, 34);
-            this.buttonFirst.TabIndex = 0;
-            this.buttonFirst.Text = "<<";
-            this.buttonFirst.UseVisualStyleBackColor = true;
-            // 
-            // buttonPrevious
-            // 
-            this.buttonPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonPrevious.Location = new System.Drawing.Point(51, 3);
-            this.buttonPrevious.Name = "buttonPrevious";
-            this.buttonPrevious.Size = new System.Drawing.Size(39, 34);
-            this.buttonPrevious.TabIndex = 0;
-            this.buttonPrevious.Text = "<";
-            this.buttonPrevious.UseVisualStyleBackColor = true;
-            // 
-            // buttonNext
-            // 
-            this.buttonNext.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonNext.Location = new System.Drawing.Point(147, 3);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(39, 34);
-            this.buttonNext.TabIndex = 0;
-            this.buttonNext.Text = ">";
-            this.buttonNext.UseVisualStyleBackColor = true;
-            // 
-            // buttonLast
-            // 
-            this.buttonLast.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonLast.Location = new System.Drawing.Point(195, 3);
-            this.buttonLast.Name = "buttonLast";
-            this.buttonLast.Size = new System.Drawing.Size(43, 34);
-            this.buttonLast.TabIndex = 0;
-            this.buttonLast.Text = ">>";
-            this.buttonLast.UseVisualStyleBackColor = true;
-            // 
-            // labelpage
-            // 
-            this.labelpage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelpage.AutoSize = true;
-            this.labelpage.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelpage.Location = new System.Drawing.Point(102, 9);
-            this.labelpage.Name = "labelpage";
-            this.labelpage.Size = new System.Drawing.Size(35, 23);
-            this.labelpage.TabIndex = 1;
-            this.labelpage.Text = "0/0";
+            this.buttonTorles.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonTorles.Location = new System.Drawing.Point(15, 512);
+            this.buttonTorles.Name = "buttonTorles";
+            this.buttonTorles.Size = new System.Drawing.Size(240, 38);
+            this.buttonTorles.TabIndex = 10;
+            this.buttonTorles.Text = "Kijelölt törlése";
+            this.buttonTorles.UseVisualStyleBackColor = true;
+            this.buttonTorles.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // ProfilAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 558);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.tableLayoutPanel5);
             this.Controls.Add(this.textBoxKeres);
             this.Controls.Add(this.buttonMehet);
             this.Controls.Add(this.listBoxNevek);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.buttonFooldal);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonReset);
+            this.Controls.Add(this.buttonTorles);
+            this.Controls.Add(this.buttonMod);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximumSize = new System.Drawing.Size(1030, 605);
             this.MinimumSize = new System.Drawing.Size(1030, 605);
@@ -493,8 +572,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonFooldal;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Button buttonMod;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
@@ -517,14 +595,21 @@
         private System.Windows.Forms.Button buttonMehet;
         private System.Windows.Forms.ListBox listBoxNevek;
         private System.Windows.Forms.TextBox textBoxKeres;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Button buttonFirst;
-        private System.Windows.Forms.Button buttonPrevious;
-        private System.Windows.Forms.Button buttonNext;
-        private System.Windows.Forms.Button buttonLast;
-        private System.Windows.Forms.Label labelpage;
         private System.Windows.Forms.RadioButton radioButtonAdmin;
         private System.Windows.Forms.RadioButton radioButtonFelh;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label labelpage;
+        private System.Windows.Forms.Button buttonLast;
+        private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.Button buttonPrevious;
+        private System.Windows.Forms.Button buttonFirst;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Button buttonTorles;
     }
 }
