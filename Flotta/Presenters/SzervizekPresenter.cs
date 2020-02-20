@@ -11,6 +11,9 @@ namespace Flotta.Presenters
 {
     class SzervizekPresenter
     {
+        //keresés megvalósítása, adatbázisból törlés, adatbázisba helyezés
+
+
         private ISzervizekForm view;
         private autokContext db = new autokContext();
         public List<String> rendszamListaPres = new List<String>();
@@ -20,19 +23,12 @@ namespace Flotta.Presenters
         {
             view = param;
             db = new autokContext();
-            LoadRendszamList();
-            LoadDetails();
-        }
-
-        public void LoadRendszamList()
-        {
-            //Rendszamlista feltöltése adatokkal
             getRendszamList();
+            LoadDetails();
         }
 
         public void LoadDetails()
         {
-
                 var lista = idopontLeirasListaGeneralas(view.selectedRendszam);
                 //view frissítése
                 getKivalasztottReGyaTiKm(view.selectedRendszam); //rendszám, gyártmány, típus, km frissítése
@@ -40,7 +36,7 @@ namespace Flotta.Presenters
                 idopontLeirasListaGeneralas(view.selectedRendszam); //ez nem írat ki semmit, csak a szervizek és időpontok listáját lekéri
                 aktIdopontKiiratas(lista, view.aktIdopont); //kiíratja az akt időpontot és a hozzá tartozó leírást
                 comboboxFeltoltes(lista);
-          
+
         }
 
         public void getKivalasztottReGyaTiKm(string selected){
@@ -230,11 +226,19 @@ namespace Flotta.Presenters
         public void keres()
         {
             string keres = view.search;
-            
-            if (!string.IsNullOrWhiteSpace(keres))
+            List<String> keresettLista = new List<string>();
+            if (keres!=null)
             {
-                keres = keres.ToUpper();
-
+                foreach (var r in rendszamListaPres)
+                {
+                    if (r.Contains(keres))
+                    {
+                        view.searchTextBox = "itt vagyok";
+                        keresettLista.Add(r);
+                    }
+                }
+                
+                view.rendszamLista = keresettLista;
             }
         }
 

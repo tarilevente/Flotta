@@ -31,5 +31,6 @@ namespace Flotta.ViewInterfaces
         bool showHide { get; set; }
         
         string search { get; }
+        string searchTextBox { set; }
     }
 }

@@ -39,6 +39,7 @@ namespace Flotta.Views
         public bool showHide { set => tableLayoutPanelNav.Visible = value; get => tableLayoutPanelNav.Visible; }
 
         public string search => textBoxKeres.Text;
+        public string searchTextBox { set => textBoxKeres.Text=value; }
        
         public SzervizekForm()
         {
@@ -69,9 +70,7 @@ namespace Flotta.Views
 
         private void buttonKeres_Click(object sender, EventArgs e)
         {
-            presenter.LoadDetails();
             textBoxKeres.Text = null;
-            presenter.keres();
         }
 
         private void listBoxRendszamok_SelectedIndexChanged(object sender, EventArgs e)
