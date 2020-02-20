@@ -71,6 +71,7 @@ namespace Flotta.Views
         {
             presenter.LoadDetails();
             textBoxKeres.Text = null;
+            presenter.keres();
         }
 
         private void listBoxRendszamok_SelectedIndexChanged(object sender, EventArgs e)

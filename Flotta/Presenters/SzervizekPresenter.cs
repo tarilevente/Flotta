@@ -40,7 +40,6 @@ namespace Flotta.Presenters
                 idopontLeirasListaGeneralas(view.selectedRendszam); //ez nem írat ki semmit, csak a szervizek és időpontok listáját lekéri
                 aktIdopontKiiratas(lista, view.aktIdopont); //kiíratja az akt időpontot és a hozzá tartozó leírást
                 comboboxFeltoltes(lista);
-                
           
         }
 
@@ -227,5 +226,18 @@ namespace Flotta.Presenters
             }
            
         }
+
+        public void keres()
+        {
+            string keres = view.search;
+            
+            if (!string.IsNullOrWhiteSpace(keres))
+            {
+                keres = keres.ToUpper();
+
+            }
+        }
+
+
     }
 }
