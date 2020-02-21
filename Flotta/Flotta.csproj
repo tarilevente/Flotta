@@ -131,7 +131,6 @@
     <Compile Include="ViewInterfaces\ISzervizekForm.cs" />
     <Compile Include="ViewInterfaces\IUjAutoForm.cs" />
     <Compile Include="ViewInterfaces\IUjSzerviz.cs" />
-    <Compile Include="ViewModels\SzervizVM.cs" />
     <Compile Include="Views\AttekintesForm.cs">
       <SubType>Form</SubType>
     </Compile>

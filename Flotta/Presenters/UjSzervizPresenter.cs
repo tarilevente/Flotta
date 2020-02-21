@@ -24,6 +24,7 @@ namespace Flotta.Presenters
         {
             return db.Database.Exists();
         }
+
         public bool Check()
         {
             if (!ConnectionExists())
@@ -37,19 +38,25 @@ namespace Flotta.Presenters
                 {
                     view.errorRendszam = "Hibás a rendszám formátuma, NKK-111";
                     return false;
-                } //működik
-
+                } 
                 if (!VanIlyenRendszam(view.rendszam))
                 {
                     return false;
-                } //működik
-
-                /*if (!IdopontCheck(view.idopont))
+                } 
+                if (!IdopontCheck(view.idopont)) 
                 {
-                    view.errorLeiras = "false ág";
+                    return false;
+                } 
+                if (view.leiras == string.Empty || string.IsNullOrWhiteSpace(view.leiras))
+                {
+                    view.errorLeiras = "Meg kell adnod egy leírást. ";
                     return false;
                 }
-                view.leiras = "true ág";*/
+                if (view.leiras.Length > 1500)
+                {
+                    view.errorLeiras = "A leírás max. 1500 karakter lehet.";
+                    return false;
+                }
 
                 return true;
             }
@@ -114,13 +121,26 @@ namespace Flotta.Presenters
         private bool IdopontCheck(DateTime ip)
         {
             DateTime now = DateTime.Now;
-            if (now.CompareTo(ip)>7)
+            int has = DateTime.Compare(now.AddDays(7), ip);
+            if (has<0)
             {
                 view.errorIdopont = "Egy hétnél előrébb nem rögzíthetsz!";
                 return false;
             }
-            view.leiras =now.CompareTo(ip).ToString();
             return true;
         }
+
+        public void Vegrehajt()
+        {
+            string rendszam = view.rendszam;
+            DateTime idopont = view.idopont;
+            string leiras = view.leiras;
+            bool casco = view.casco;
+            bool bizt = view.bizt;
+
+            //itt kell feltölteni az adatokat az adatbázisba
+
+        }
+
     }
 }

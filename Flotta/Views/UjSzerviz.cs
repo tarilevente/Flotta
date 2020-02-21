@@ -20,12 +20,12 @@ namespace Flotta.Views
         public bool casco => radioButtonCasco.Checked;
         public bool bizt => radioButtonKot.Checked;
         public DateTime idopont => dateTimePicker1.Value;
-        public string leiras { get => textBoxLeiras.Text; set => textBoxLeiras.Text = value; }//tesztelés
+        public string leiras { get => textBoxLeiras.Text;  }//tesztelés
         
 
         public string errorRendszam { set => errorProviderRendsz.SetError(labelRendsz, value); }
         public string errorIdopont { set => errorProviderIdop.SetError(labelIdop,value); }
-        public string errorLeiras { set => errorProviderLeir.SetError(textBoxLeiras,value); }
+        public string errorLeiras { set => errorProviderLeir.SetError(labelLeiras,value); }
         public string errorDB { set => errorProviderDB.SetError(labelCimke,value); }
 
         public UjSzerviz()
@@ -68,7 +68,7 @@ namespace Flotta.Views
         {
             if(presenter.Check())
             {
-                //presenter.Vegrehajt(); rendsz toupper
+                presenter.Vegrehajt(); //nem működik
                 reset();
             }
         }

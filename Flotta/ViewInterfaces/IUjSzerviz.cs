@@ -12,7 +12,7 @@ namespace Flotta.ViewInterfaces
         bool casco { get; }
         bool bizt { get; }
         DateTime idopont { get; }
-        string leiras { get; set; }
+        string leiras { get; }
 
 
         string errorRendszam {set;} //formátum

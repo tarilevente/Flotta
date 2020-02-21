@@ -35,6 +35,7 @@
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonFelv = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelIdop = new System.Windows.Forms.Label();
             this.labelRendsz = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,7 +49,7 @@
             this.errorProviderIdop = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderDB = new System.Windows.Forms.ErrorProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.labelIdop = new System.Windows.Forms.Label();
+            this.labelLeiras = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLeir)).BeginInit();
@@ -133,6 +134,7 @@
             this.tableLayoutPanel1.Controls.Add(this.radioButtonKot, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxRendsz, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelLeiras, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 22);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -142,6 +144,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(688, 85);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // labelIdop
+            // 
+            this.labelIdop.AutoSize = true;
+            this.labelIdop.Location = new System.Drawing.Point(127, 32);
+            this.labelIdop.Name = "labelIdop";
+            this.labelIdop.Size = new System.Drawing.Size(0, 17);
+            this.labelIdop.TabIndex = 16;
             // 
             // labelRendsz
             // 
@@ -250,13 +260,13 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "comboboxból kiválasztani??";
             // 
-            // labelIdop
+            // labelLeiras
             // 
-            this.labelIdop.AutoSize = true;
-            this.labelIdop.Location = new System.Drawing.Point(127, 32);
-            this.labelIdop.Name = "labelIdop";
-            this.labelIdop.Size = new System.Drawing.Size(0, 17);
-            this.labelIdop.TabIndex = 16;
+            this.labelLeiras.AutoSize = true;
+            this.labelLeiras.Location = new System.Drawing.Point(3, 64);
+            this.labelLeiras.Name = "labelLeiras";
+            this.labelLeiras.Size = new System.Drawing.Size(0, 17);
+            this.labelLeiras.TabIndex = 18;
             // 
             // UjSzerviz
             // 
@@ -307,5 +317,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelRendsz;
         private System.Windows.Forms.Label labelIdop;
+        private System.Windows.Forms.Label labelLeiras;
     }
 }
