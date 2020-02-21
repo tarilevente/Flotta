@@ -12,6 +12,7 @@ namespace Flotta.Presenters
     class SzervizekPresenter
     {
         //keresés megvalósítása, adatbázisból törlés, adatbázisba helyezés
+        
 
 
         private ISzervizekForm view;

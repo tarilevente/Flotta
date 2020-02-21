@@ -28,21 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxLeiras = new System.Windows.Forms.TextBox();
             this.buttonVissza = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonFelv = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelRendsz = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxRendsz = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.radioButtonCasco = new System.Windows.Forms.RadioButton();
             this.radioButtonKot = new System.Windows.Forms.RadioButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBoxLeiras = new System.Windows.Forms.TextBox();
+            this.textBoxRendsz = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.labelCimke = new System.Windows.Forms.Label();
+            this.errorProviderLeir = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderRendsz = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderIdop = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderDB = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelIdop = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLeir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRendsz)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIdop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDB)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -60,6 +72,14 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // textBoxLeiras
+            // 
+            this.textBoxLeiras.Location = new System.Drawing.Point(8, 113);
+            this.textBoxLeiras.Multiline = true;
+            this.textBoxLeiras.Name = "textBoxLeiras";
+            this.textBoxLeiras.Size = new System.Drawing.Size(687, 362);
+            this.textBoxLeiras.TabIndex = 6;
             // 
             // buttonVissza
             // 
@@ -96,28 +116,40 @@
             this.buttonFelv.TabIndex = 3;
             this.buttonFelv.Text = "Felvitel";
             this.buttonFelv.UseVisualStyleBackColor = true;
+            this.buttonFelv.Click += new System.EventHandler(this.buttonFelv_Click);
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.21008F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.84874F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.94118F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.67624F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.2468F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.07696F));
+            this.tableLayoutPanel1.Controls.Add(this.labelIdop, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelRendsz, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxRendsz, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.radioButtonCasco, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.radioButtonKot, 2, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 22);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonCasco, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonKot, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxRendsz, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 2, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 22);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(688, 85);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // labelRendsz
+            // 
+            this.labelRendsz.AutoSize = true;
+            this.labelRendsz.Location = new System.Drawing.Point(127, 0);
+            this.labelRendsz.Name = "labelRendsz";
+            this.labelRendsz.Size = new System.Drawing.Size(0, 17);
+            this.labelRendsz.TabIndex = 17;
             // 
             // label1
             // 
@@ -133,35 +165,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(3, 42);
+            this.label2.Location = new System.Drawing.Point(3, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Időpont";
             // 
-            // textBoxRendsz
-            // 
-            this.textBoxRendsz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxRendsz.Location = new System.Drawing.Point(176, 2);
-            this.textBoxRendsz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxRendsz.Name = "textBoxRendsz";
-            this.textBoxRendsz.Size = new System.Drawing.Size(315, 28);
-            this.textBoxRendsz.TabIndex = 5;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(176, 44);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(315, 29);
-            this.dateTimePicker1.TabIndex = 8;
-            // 
             // radioButtonCasco
             // 
             this.radioButtonCasco.AutoSize = true;
             this.radioButtonCasco.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.radioButtonCasco.Location = new System.Drawing.Point(498, 2);
+            this.radioButtonCasco.Location = new System.Drawing.Point(469, 2);
             this.radioButtonCasco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButtonCasco.Name = "radioButtonCasco";
             this.radioButtonCasco.Size = new System.Drawing.Size(84, 28);
@@ -174,7 +188,7 @@
             this.radioButtonKot.AutoSize = true;
             this.radioButtonKot.Checked = true;
             this.radioButtonKot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.radioButtonKot.Location = new System.Drawing.Point(498, 44);
+            this.radioButtonKot.Location = new System.Drawing.Point(469, 34);
             this.radioButtonKot.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButtonKot.Name = "radioButtonKot";
             this.radioButtonKot.Size = new System.Drawing.Size(184, 28);
@@ -183,30 +197,74 @@
             this.radioButtonKot.Text = "Kötelező biztosítás";
             this.radioButtonKot.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // textBoxRendsz
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Black", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label15.Location = new System.Drawing.Point(213, 6);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(297, 45);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "Új szerviz felvitel";
+            this.textBoxRendsz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxRendsz.Location = new System.Drawing.Point(147, 2);
+            this.textBoxRendsz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxRendsz.Name = "textBoxRendsz";
+            this.textBoxRendsz.Size = new System.Drawing.Size(316, 28);
+            this.textBoxRendsz.TabIndex = 5;
             // 
-            // textBoxLeiras
+            // dateTimePicker1
             // 
-            this.textBoxLeiras.Location = new System.Drawing.Point(8, 113);
-            this.textBoxLeiras.Multiline = true;
-            this.textBoxLeiras.Name = "textBoxLeiras";
-            this.textBoxLeiras.Size = new System.Drawing.Size(687, 362);
-            this.textBoxLeiras.TabIndex = 6;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(147, 34);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(316, 29);
+            this.dateTimePicker1.TabIndex = 8;
+            // 
+            // labelCimke
+            // 
+            this.labelCimke.AutoSize = true;
+            this.labelCimke.Font = new System.Drawing.Font("Segoe UI Black", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelCimke.Location = new System.Drawing.Point(213, 6);
+            this.labelCimke.Name = "labelCimke";
+            this.labelCimke.Size = new System.Drawing.Size(297, 45);
+            this.labelCimke.TabIndex = 14;
+            this.labelCimke.Text = "Új szerviz felvitel";
+            // 
+            // errorProviderLeir
+            // 
+            this.errorProviderLeir.ContainerControl = this;
+            // 
+            // errorProviderRendsz
+            // 
+            this.errorProviderRendsz.ContainerControl = this;
+            // 
+            // errorProviderIdop
+            // 
+            this.errorProviderIdop.ContainerControl = this;
+            // 
+            // errorProviderDB
+            // 
+            this.errorProviderDB.ContainerControl = this;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 17);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "comboboxból kiválasztani??";
+            // 
+            // labelIdop
+            // 
+            this.labelIdop.AutoSize = true;
+            this.labelIdop.Location = new System.Drawing.Point(127, 32);
+            this.labelIdop.Name = "labelIdop";
+            this.labelIdop.Size = new System.Drawing.Size(0, 17);
+            this.labelIdop.TabIndex = 16;
             // 
             // UjSzerviz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 573);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelCimke);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximumSize = new System.Drawing.Size(756, 620);
@@ -219,6 +277,10 @@
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLeir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRendsz)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIdop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,7 +298,14 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.RadioButton radioButtonCasco;
         private System.Windows.Forms.RadioButton radioButtonKot;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label labelCimke;
         private System.Windows.Forms.TextBox textBoxLeiras;
+        private System.Windows.Forms.ErrorProvider errorProviderLeir;
+        private System.Windows.Forms.ErrorProvider errorProviderRendsz;
+        private System.Windows.Forms.ErrorProvider errorProviderIdop;
+        private System.Windows.Forms.ErrorProvider errorProviderDB;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelRendsz;
+        private System.Windows.Forms.Label labelIdop;
     }
 }

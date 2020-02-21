@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonKilep = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonFelvitel = new System.Windows.Forms.Button();
@@ -50,8 +51,20 @@
             this.label14 = new System.Windows.Forms.Label();
             this.checkBoxBikak = new System.Windows.Forms.CheckBox();
             this.checkBoxMento = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelCimke = new System.Windows.Forms.Label();
+            this.errorProviderRendszam = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderAlvazszam = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderKm = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderGyart = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderTipus = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderDB = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRendszam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAlvazszam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderKm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderGyart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTipus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDB)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonKilep
@@ -86,6 +99,7 @@
             this.buttonFelvitel.TabIndex = 4;
             this.buttonFelvitel.Text = "Felvitel";
             this.buttonFelvitel.UseVisualStyleBackColor = true;
+            this.buttonFelvitel.Click += new System.EventHandler(this.buttonFelvitel_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -216,22 +230,22 @@
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(103, 197);
+            this.label15.Location = new System.Drawing.Point(101, 197);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(108, 28);
+            this.label15.Size = new System.Drawing.Size(113, 28);
             this.label15.TabIndex = 7;
-            this.label15.Text = "Gyártmány";
+            this.label15.Text = "Gyártmány ";
             // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(479, 197);
+            this.label8.Location = new System.Drawing.Point(399, 197);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 28);
+            this.label8.Size = new System.Drawing.Size(219, 28);
             this.label8.TabIndex = 7;
-            this.label8.Text = "Típus";
+            this.label8.Text = "Típus (Max. 20 karakter)";
             // 
             // checkBoxAutoR
             // 
@@ -325,22 +339,46 @@
             this.checkBoxMento.Text = "   Mentődoboz";
             this.checkBoxMento.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // labelCimke
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Black", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(221, 1);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(261, 45);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Új autó felvitel";
+            this.labelCimke.AutoSize = true;
+            this.labelCimke.Font = new System.Drawing.Font("Segoe UI Black", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelCimke.Location = new System.Drawing.Point(221, 1);
+            this.labelCimke.Name = "labelCimke";
+            this.labelCimke.Size = new System.Drawing.Size(261, 45);
+            this.labelCimke.TabIndex = 13;
+            this.labelCimke.Text = "Új autó felvitel";
+            // 
+            // errorProviderRendszam
+            // 
+            this.errorProviderRendszam.ContainerControl = this;
+            // 
+            // errorProviderAlvazszam
+            // 
+            this.errorProviderAlvazszam.ContainerControl = this;
+            // 
+            // errorProviderKm
+            // 
+            this.errorProviderKm.ContainerControl = this;
+            // 
+            // errorProviderGyart
+            // 
+            this.errorProviderGyart.ContainerControl = this;
+            // 
+            // errorProviderTipus
+            // 
+            this.errorProviderTipus.ContainerControl = this;
+            // 
+            // errorProviderDB
+            // 
+            this.errorProviderDB.ContainerControl = this;
             // 
             // UjAutoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 573);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.labelCimke);
             this.Controls.Add(this.buttonKilep);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonFelvitel);
@@ -353,6 +391,12 @@
             this.Text = "Flotta - Gépjármű nyilvántartás - Új autó felvitel";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRendszam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAlvazszam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderKm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderGyart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTipus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,10 +422,16 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxGyart;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelCimke;
         private System.Windows.Forms.CheckBox checkBoxAutoR;
         private System.Windows.Forms.CheckBox checkBoxVont;
         private System.Windows.Forms.CheckBox checkBoxMento;
         private System.Windows.Forms.CheckBox checkBoxBikak;
+        private System.Windows.Forms.ErrorProvider errorProviderRendszam;
+        private System.Windows.Forms.ErrorProvider errorProviderAlvazszam;
+        private System.Windows.Forms.ErrorProvider errorProviderKm;
+        private System.Windows.Forms.ErrorProvider errorProviderGyart;
+        private System.Windows.Forms.ErrorProvider errorProviderTipus;
+        private System.Windows.Forms.ErrorProvider errorProviderDB;
     }
 }
