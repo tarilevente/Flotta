@@ -23,9 +23,9 @@ namespace Flotta.Views
         public string leiras { get => textBoxLeiras.Text;  }//tesztelés
         
 
-        public string errorRendszam { set => errorProviderRendsz.SetError(labelRendsz, value); }
-        public string errorIdopont { set => errorProviderIdop.SetError(labelIdop,value); }
-        public string errorLeiras { set => errorProviderLeir.SetError(labelLeiras,value); }
+        public string errorRendszam { set => errorProviderRendsz.SetError(textBoxRendsz, value); }
+        public string errorIdopont { set => errorProviderIdop.SetError(dateTimePicker1,value); }
+        public string errorLeiras { set => errorProviderLeir.SetError(textBoxLeiras,value); }
         public string errorDB { set => errorProviderDB.SetError(labelCimke,value); }
 
         public UjSzerviz()
@@ -59,11 +59,6 @@ namespace Flotta.Views
             reset();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonFelv_Click(object sender, EventArgs e)
         {
             if(presenter.Check())
@@ -71,6 +66,11 @@ namespace Flotta.Views
                 presenter.Vegrehajt(); //nem működik
                 reset();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

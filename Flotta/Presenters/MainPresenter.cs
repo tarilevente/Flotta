@@ -14,13 +14,15 @@ namespace Flotta.Presenters
     {
         private IMainWindow view;
         private autokContext db = new autokContext();
-        private MainWindow mainWindow;
 
     
         public MainPresenter(IMainWindow param)
         {
             view = param;
-            Load();
+            if (ConnectionExists())
+            {
+                Load();
+            }
         }
 
         public bool ConnectionExists()

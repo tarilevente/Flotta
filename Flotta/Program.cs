@@ -17,7 +17,7 @@ namespace Flotta
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GepjarmuvekAdminForm());
+            Application.Run(new LoginForm());
         }
     }
 }

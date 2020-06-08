@@ -61,26 +61,6 @@ namespace Flotta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap a_b_testing {
-            get {
-                object obj = ResourceManager.GetObject("a_b_testing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap adaptive_design {
-            get {
-                object obj = ResourceManager.GetObject("adaptive_design", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ADAT HIBA.
         /// </summary>
         internal static string AdatHiba {
@@ -90,17 +70,7 @@ namespace Flotta.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap analytics {
-            get {
-                object obj = ResourceManager.GetObject("analytics", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Belépés sikertelen, hibás felhasználónév vagy jelszó.
+        ///   Looks up a localized string similar to Belépés sikertelen, hibás jelszó.
         /// </summary>
         internal static string BelepesHiba {
             get {
@@ -111,9 +81,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bubble_smiley {
+        internal static System.Drawing.Bitmap blueprint_1 {
             get {
-                object obj = ResourceManager.GetObject("bubble_smiley", resourceCulture);
+                object obj = ResourceManager.GetObject("blueprint_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -121,9 +91,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap centered_design {
+        internal static System.Drawing.Bitmap bulb {
             get {
-                object obj = ResourceManager.GetObject("centered_design", resourceCulture);
+                object obj = ResourceManager.GetObject("bulb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -131,9 +101,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cloud_service {
+        internal static System.Drawing.Bitmap calendar {
             get {
-                object obj = ResourceManager.GetObject("cloud_service", resourceCulture);
+                object obj = ResourceManager.GetObject("calendar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -141,29 +111,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap coding {
+        internal static System.Drawing.Bitmap charts {
             get {
-                object obj = ResourceManager.GetObject("coding", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap content {
-            get {
-                object obj = ResourceManager.GetObject("content", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap control_panel {
-            get {
-                object obj = ResourceManager.GetObject("control_panel", resourceCulture);
+                object obj = ResourceManager.GetObject("charts", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -180,49 +130,28 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap design {
+        internal static System.Drawing.Bitmap fav {
             get {
-                object obj = ResourceManager.GetObject("design", resourceCulture);
+                object obj = ResourceManager.GetObject("fav", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Belépés sikertelen, a felhasználói fiók nem létezik, regisztrálj!.
+        /// </summary>
+        internal static string FelhasznaloHiba {
+            get {
+                return ResourceManager.GetString("FelhasznaloHiba", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap double_bubbles {
+        internal static System.Drawing.Bitmap HTML {
             get {
-                object obj = ResourceManager.GetObject("double_bubbles", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap email {
-            get {
-                object obj = ResourceManager.GetObject("email", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap features {
-            get {
-                object obj = ResourceManager.GetObject("features", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap hosting {
-            get {
-                object obj = ResourceManager.GetObject("hosting", resourceCulture);
+                object obj = ResourceManager.GetObject("HTML", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -240,9 +169,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap idea_bulb {
+        internal static System.Drawing.Bitmap image_part_001 {
             get {
-                object obj = ResourceManager.GetObject("idea_bulb", resourceCulture);
+                object obj = ResourceManager.GetObject("image_part_001", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -250,9 +179,109 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap index {
+        internal static System.Drawing.Bitmap image_part_002 {
             get {
-                object obj = ResourceManager.GetObject("index", resourceCulture);
+                object obj = ResourceManager.GetObject("image_part_002", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_003 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_003", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_004 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_004", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_005 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_005", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_006 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_006", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_007 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_007", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_008 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_008", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_009 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_009", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_010 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_010", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_011 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_011", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_part_012 {
+            get {
+                object obj = ResourceManager.GetObject("image_part_012", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,26 +292,6 @@ namespace Flotta.Properties {
         internal static string IndexIsmeretlen {
             get {
                 return ResourceManager.GetString("IndexIsmeretlen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap information_architecture {
-            get {
-                object obj = ResourceManager.GetObject("information_architecture", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap interact {
-            get {
-                object obj = ResourceManager.GetObject("interact", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -298,9 +307,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap layout {
+        internal static System.Drawing.Bitmap login_logo__easyweb_WW_auth_ {
             get {
-                object obj = ResourceManager.GetObject("layout", resourceCulture);
+                object obj = ResourceManager.GetObject("login_logo__easyweb_WW_auth_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -318,9 +327,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mobile_chat {
+        internal static System.Drawing.Bitmap padlock {
             get {
-                object obj = ResourceManager.GetObject("mobile_chat", resourceCulture);
+                object obj = ResourceManager.GetObject("padlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -328,9 +337,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap network {
+        internal static System.Drawing.Bitmap steering_wheel {
             get {
-                object obj = ResourceManager.GetObject("network", resourceCulture);
+                object obj = ResourceManager.GetObject("steering_wheel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -338,139 +347,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap optimization {
+        internal static System.Drawing.Bitmap steering_wheel2 {
             get {
-                object obj = ResourceManager.GetObject("optimization", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap profiling {
-            get {
-                object obj = ResourceManager.GetObject("profiling", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap prototyping {
-            get {
-                object obj = ResourceManager.GetObject("prototyping", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap quality_award {
-            get {
-                object obj = ResourceManager.GetObject("quality_award", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rating_hearts {
-            get {
-                object obj = ResourceManager.GetObject("rating_hearts", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap research {
-            get {
-                object obj = ResourceManager.GetObject("research", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap resources {
-            get {
-                object obj = ResourceManager.GetObject("resources", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap responsive_design {
-            get {
-                object obj = ResourceManager.GetObject("responsive_design", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap safety_shield {
-            get {
-                object obj = ResourceManager.GetObject("safety_shield", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sitemap {
-            get {
-                object obj = ResourceManager.GetObject("sitemap", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ssl_certificated {
-            get {
-                object obj = ResourceManager.GetObject("ssl_certificated", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap staging {
-            get {
-                object obj = ResourceManager.GetObject("staging", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap testing {
-            get {
-                object obj = ResourceManager.GetObject("testing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap thumb_up {
-            get {
-                object obj = ResourceManager.GetObject("thumb_up", resourceCulture);
+                object obj = ResourceManager.GetObject("steering_wheel2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -488,9 +367,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap user_experience {
+        internal static System.Drawing.Bitmap user_id {
             get {
-                object obj = ResourceManager.GetObject("user_experience", resourceCulture);
+                object obj = ResourceManager.GetObject("user_id", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -498,49 +377,9 @@ namespace Flotta.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap user_interface {
+        internal static System.Drawing.Bitmap user1 {
             get {
-                object obj = ResourceManager.GetObject("user_interface", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap user_location {
-            get {
-                object obj = ResourceManager.GetObject("user_location", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ux_review {
-            get {
-                object obj = ResourceManager.GetObject("ux_review", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap visual_design {
-            get {
-                object obj = ResourceManager.GetObject("visual_design", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap wireframes {
-            get {
-                object obj = ResourceManager.GetObject("wireframes", resourceCulture);
+                object obj = ResourceManager.GetObject("user1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

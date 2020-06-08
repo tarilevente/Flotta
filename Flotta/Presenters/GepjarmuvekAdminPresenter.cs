@@ -16,7 +16,6 @@ namespace Flotta.Presenters
         public List<String> rendszamLista = new List<String>();
         private List<autoktabla> autokTabla = new List<autoktabla>();
         private List<muszakiallapottabla> muszakiTabla = new List<muszakiallapottabla>();
-        private List<soforautojatabla> soforTabla = new List<soforautojatabla>();
         private List<felhtabla> felhTabla = new List<felhtabla>();
 
         public GepjarmuvekAdminPresenter(IGepjarmuvekAdminForm param)
@@ -30,7 +29,9 @@ namespace Flotta.Presenters
         {
             return db.Database.Exists();
         }
-
+        /// <summary>
+        /// Az adatbázis rendszámait listázza List<string> listába, mely megjelenik a listboxban a view-n
+        /// </summary>
         public void getRendszamList()
         {
             if (!ConnectionExists())
@@ -46,36 +47,36 @@ namespace Flotta.Presenters
                 if (rendszamLista.Count < 1)
                 {
                     view.errorDB = "Nincs az adatbázisban autó. ";
+                    view.rendszamLista = null;
                 }
                 else
                 {
                     view.rendszamLista = rendszamLista;
                 }
-
-                
             }
         }
 
+        /// <summary>
+        ///A rendszámok listáján kívül minden adatot megjelenít, az adatokat lekérdező függvényeket hívja meg.
+        /// </summary>
         public void Load()
         {
             KiirAktAutoTabla();
             KiirMuszakiTabla();
+            kiirSofor();
         }
 
         public void KiirAktAutoTabla()
         {
-            if (view.selectedRendszam.Length < 1)
+            if (String.IsNullOrEmpty(view.selectedRendszam))
             {
                 view.errorDB = "Nincs autó a listában. ";
             }
             else
             {
                 string rendsz = view.selectedRendszam;
-                autokTabla = db.autoktabla.Select(x => x).ToList();
-                foreach (var a in autokTabla)
-                {
-                    if (a.rendszam.Contains(rendsz))
-                    {
+                autokTabla = db.autoktabla.ToList();
+                var a = autokTabla.SingleOrDefault(x=>x.rendszam.Equals(rendsz));
                         view.rendszam = a.rendszam;
                         view.alvaz = a.alvazszam;
                         view.gyartmany = a.gyartmany;
@@ -83,10 +84,8 @@ namespace Flotta.Presenters
                         view.km = a.km.ToString();
                         view.autoR = Convert.ToBoolean(a.autoradio);
                         view.vont = Convert.ToBoolean(a.vontatokotel);
-                        view.bikak = Convert.ToBoolean(a.vontatokotel);
+                        view.bikak = Convert.ToBoolean(a.bikakabel);
                         view.mentod = Convert.ToBoolean(a.mentodoboz);
-                    }
-                }
             }
         }
 
@@ -99,11 +98,8 @@ namespace Flotta.Presenters
             else
             {
                 string rendsz = view.selectedRendszam;
-                muszakiTabla = db.muszakiallapottabla.Select(x=>x).ToList();
-                foreach (var m in muszakiTabla)
-                {
-                    if (m.rendszamHOZ.Contains(rendsz))
-                    {
+                muszakiTabla = db.muszakiallapottabla.ToList();
+                var m = muszakiTabla.SingleOrDefault(x=>x.rendszamHOZ.Equals(rendsz));
                         view.mMegyei = Convert.ToBoolean(m.matricaMegyei);
                         view.mOrszagos = Convert.ToBoolean(m.matricaOrszagos);
                         view.teligumi = Convert.ToBoolean(m.teligumi);
@@ -111,21 +107,35 @@ namespace Flotta.Presenters
                         view.muszaki = m.muszakiErv;
                         view.bizt = m.biztosErv;
                         view.evjarat = m.evjarat.ToString("yyyy-MM-dd");
-                    }
+            }
+        }
+        
+        public void kiirSofor()
+        {
+            if (view.selectedRendszam.Length < 1)
+            {
+                view.errorDB = "Nincs autó a listában. ";
+            }
+            else
+            {
+                string rend = view.selectedRendszam;
+                int id = -1;
+                var talalat = db.soforautojatabla.SingleOrDefault(x => x.rendszam.Equals(rend));
+                if (talalat==null)
+                {
+                    view.sofor = "Ehhez az autóhoz nem tartozik sofőr. ";
+                }
+                else
+                {
+                    var felh = db.felhtabla.SingleOrDefault(x => x.idFelh == talalat.idfelh);
+                    view.sofor = felh.vezetekNev.ToUpper() + " " + felh.keresztNev.ToUpper();
                 }
             }
         }
-
-        public void KiirSofor()
-        {
-            soforTabla = db.soforautojatabla.Select(x=>x).ToList();
-            felhTabla = db.felhtabla.Select(x => x).ToList();
-
-
-        }
-
-        
-
+        /// <summary>
+        /// A bevitel ellenőrzés függvényeit hívja meg. BOOL metódus
+        /// </summary>
+        /// <returns></returns>
         public bool Check()
         {
             if (!ConnectionExists())
@@ -163,6 +173,27 @@ namespace Flotta.Presenters
                     view.errorTip = "A típus nem lehet 20 karakternél hosszabb!";
                 }
 
+                if (!MuszakiCheckOK(view.muszaki))
+                {
+                    return false;
+                }
+
+                if (!BiztositasCheckOK(view.bizt))
+                {
+                    return false;
+                }
+
+                if (!ModositAutokTablaCheck())
+                {
+                    return false;
+                }
+
+                if (!ModositMuszakiAllTablCheck())
+                {
+                    return false;
+                }
+
+
                 return true;
             }
         }
@@ -190,7 +221,6 @@ namespace Flotta.Presenters
                 return false;
 
             return true;
-
         }
 
         private bool AlvazszamCheckOK(string alvazszam)
@@ -224,7 +254,6 @@ namespace Flotta.Presenters
                 view.errorAlv = "Az alvázszám tartalmaz betűt!";
                 return false;
             }
-
             return true;
         }
 
@@ -246,9 +275,7 @@ namespace Flotta.Presenters
             {
                 return false;
             }
-
             return true;
-
         }
 
         private bool GyartmanyCheckOk(string gyart)
@@ -257,7 +284,13 @@ namespace Flotta.Presenters
             {
                 return false;
             }
-            String osszes = "Buick?Cadillac?ChevroletChrysler?Dodge?Ford?GEO?Mercedes?GMC?Jeep?Lincoln?Lingenfelter?Mercury?Saleen?Shelby?Tesla?Acura?Daihatsu?Dome?Honda?Infiniti?Isuzu?Lexus?Mazda?Mitsubishi?Nissan?Subaru?Suzuki?Toyota?Audi?BMW?Gumpert?Isdera?Mercedes-Benz?Opel?Porsche?Smart?Volkswagen?VW?Alfa Romeo?Alfaromeo?Ferrari?Fiat?Lancia?Lamborghini?Maserati?Pagani?Pininfarina?Qvale?Aston Martin?Bentley?Caterham Cars?Caparo?Jaguar?Jensen?Land Rover?Lightning?Lister?Lotus?Mini?MorganRolls-Royce?TVR?Vauxhall?Bugatti?Citroen?Heuliez?Mega?Peugeot?Renault?Hyundai?Kia?Oullim?SsangYong?Koenigsegg?Volvo?AvtoVAZ?Izs?Lada?UAZ?Škoda?Innotech?MTX?TatraARO?tatra?aro?Dacia?SEAT?Hindustan?Mahindra?Maruti Suzuki?maruti?suzuki?San?Tata?Force Motors?Beijing Jeep?jeep?Hongqi?Holden?Proton?Bufori?Tofas?ZAZ?BRIXXON?Solo?Locus";
+            String osszes = "Buick?Cadillac?ChevroletChrysler?Dodge?Ford?GEO?Mercedes?GMC?Jeep?Lincoln?Lingenfelter?Mercury?Saleen?Shelby?" +
+                "Tesla?Acura?Daihatsu?Dome?Honda?Infiniti?Isuzu?Lexus?Mazda?Mitsubishi?Nissan?Subaru?Suzuki?Toyota?Audi?BMW?Gumpert?Isdera?" +
+                "Mercedes-Benz?Opel?Porsche?Smart?Volkswagen?VW?Alfa Romeo?Alfaromeo?Ferrari?Fiat?Lancia?Lamborghini?Maserati?Pagani?Pininfarina?" +
+                "Qvale?Aston Martin?Bentley?Caterham Cars?Caparo?Jaguar?Jensen?Land Rover?Lightning?Lister?Lotus?Mini?MorganRolls-Royce?TVR?Vauxhall?" +
+                "Bugatti?Citroen?Heuliez?Mega?Peugeot?Renault?Hyundai?Kia?Oullim?SsangYong?Koenigsegg?Volvo?AvtoVAZ?Izs?Lada?UAZ?Škoda?Innotech" +
+                "?MTX?TatraARO?tatra?aro?Dacia?SEAT?Hindustan?Mahindra?Maruti Suzuki?maruti?suzuki?San?Tata?Force Motors?Beijing Jeep?jeep?Hongqi?" +
+                "Holden?Proton?Bufori?Tofas?ZAZ?BRIXXON?Solo?Locus";
             gyart = gyart.ToUpper();
             string[] split = osszes.Split('?');
             List<string> osszesLista = new List<string>();
@@ -282,6 +315,215 @@ namespace Flotta.Presenters
                 return false;
             }
             return true;
+        }
+
+        private bool MuszakiCheckOK(DateTime aktM)
+        {
+            DateTime now = DateTime.Now;
+            int has = DateTime.Compare(now.AddYears(3), aktM); 
+            int has2 = DateTime.Compare(now, aktM);
+            if (has2>0)
+            {
+                view.errorMuszaki = "Ez az időpont már elmúlt.  ";
+                return false;
+            }
+            if (has < 0)
+            {
+                view.errorMuszaki = "max. 3 évre előre lehet rögzíteni! ";
+                return false;
+            }
+            return true;
+        }
+
+        private bool BiztositasCheckOK(DateTime aktB)
+        {
+            DateTime now = DateTime.Now;
+            int has = DateTime.Compare(now.AddYears(1), aktB);
+            int has2 = DateTime.Compare(now, aktB);
+            if (has2 > 0)
+            {
+                view.errorBizt = "Ez az időpont már elmúlt.  ";
+                return false;
+            }
+            if (has < 0)
+            {
+                view.errorBizt = "A biztosítást max. egy évre adják! ";
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Az adatok módosításáért felel, Check-eket követően hívódik meg.
+        /// </summary>
+        public void Modosit()
+        {
+            //autóktábla update
+            autoktabla regi = db.autoktabla.SingleOrDefault(x => x.rendszam.Contains(view.selectedRendszam));
+            autoktabla uj = new autoktabla(
+                view.rendszam,
+                view.alvaz,
+                Convert.ToInt32(view.km),
+                view.autoR,
+                view.vont,
+                view.bikak,
+                view.mentod,
+                view.gyartmany,
+                view.tipus);
+            if (uj != null)
+            {
+                db.Entry(regi).CurrentValues.SetValues(uj);
+            }
+
+            //műszakiállapottábla update
+            muszakiallapottabla regiM = db.muszakiallapottabla.SingleOrDefault(x => x.rendszamHOZ.Contains(view.selectedRendszam));
+            DateTime evjarat = regiM.evjarat;
+            int id = regiM.idmuszakiAllapot;
+            muszakiallapottabla ujM = new muszakiallapottabla(
+                id,
+                view.rendszam,
+                view.mMegyei,
+                view.mOrszagos,
+                view.teligumi,
+                view.nyarigumi,
+                view.muszaki,
+                view.bizt,
+                evjarat);
+            if (uj != null)
+            {
+                db.Entry(regiM).CurrentValues.SetValues(ujM);
+            }
+            Save();
+        }
+        
+        /// <summary>
+        /// Nem formai Check, hanem azt vizsgálja, hogy az adatbázis ne legyen redundáns
+        /// </summary>
+        /// <returns></returns>
+        private bool ModositAutokTablaCheck()
+        {
+            //Ha módosul a rendszám, van-e már ilyen?
+            string selRdsz = view.selectedRendszam;
+            string aktRdsz = view.rendszam;
+
+            var list = db.autoktabla.Select(x => x.rendszam).ToList();
+            if (selRdsz != aktRdsz)
+            {
+                if (list.Contains(aktRdsz))
+                {
+                    view.errorRendszam = "Ez az autó már létezik az adatbázisban. Kattints rá a listában, ha módosítani szeretnéd.";
+                    return false;
+                }
+            }
+
+            //Alvázszám létezik-e már az adatbázisban?
+            var alvList = db.autoktabla.Select(x => x.alvazszam).ToList();
+            var tabla = db.autoktabla.ToList();
+
+            string aktAlv = tabla.Find(x=>x.rendszam.Equals(selRdsz)).alvazszam;
+            string alvMod = view.alvaz;
+            if (!aktAlv.Contains(alvMod))
+            {
+                foreach (var item in alvList)
+                {
+                    if (item.Contains(alvMod))
+                    {
+                        view.errorAlv = "Az alvázszám már létezik az adatbázisban.";
+                        return false;
+                    }
+                }
+            }
+            
+            //kevesebb km nem lehet!
+            int aktKm = Convert.ToInt32(view.km);
+            var regisztraltKm = tabla.SingleOrDefault(x => x.rendszam.Equals(selRdsz)).km;
+                    if (aktKm < regisztraltKm)
+                    {
+                        view.errorKm = "Nem adhatsz meg kevesebb km-t az előzőnél: " + regisztraltKm + " km";
+                        return false;
+                    }
+            return true;
+        }
+        
+        private bool ModositMuszakiAllTablCheck()
+        {
+            //ha országost kipipálják, akkor a megyeit is ki kell pipálni.
+            bool orsz = view.mOrszagos;
+            if (orsz == true)
+            {
+                if (view.mMegyei == false)
+                {
+                    view.errorMegyei = "Az országos matricával megyén belül is utazni lehet, pipáld ki!";
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
+ 
+        private void Save()
+        {
+            db.SaveChanges();
+        }
+        /// <summary>
+        /// Végleges törlés előtti ellenőrzés
+        /// </summary>
+        /// <returns></returns>
+        public bool Torol()
+        {
+            if (CheckTorol())
+            {
+                Delete();
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckTorol()
+        {
+            string torolniAuto = view.selectedRendszam;
+            //Ha sofőr tartozik az autóhoz, akkor először a kapcsolatot kell törölnie a felhasználónak.
+            //A törlési szándék megerősítését szolgálja.
+            var talalat = db.soforautojatabla.Any(x => x.rendszam.Equals(torolniAuto));
+            if (talalat)
+            {
+                view.errorTorol = "Az autó nem törölhető, először a sofőrrel való kapcsolatot törölni kell. (Profilkezelés)";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        /// <summary>
+        /// eltávolítja az autót az autóktáblából, a szervizek táblából és a műszaki táblából
+        /// </summary>
+        private void Delete()
+        {
+            string rendsz = view.selectedRendszam;
+
+            List<szervizkonyvtabla> listSz = db.szervizkonyvtabla.Where(x=>x.rendszamHOZ.Contains(rendsz)).ToList();
+            foreach (var item in listSz)
+            {
+                db.szervizkonyvtabla.Remove(item);
+            }
+
+            List<muszakiallapottabla> listM = db.muszakiallapottabla.Where(x => x.rendszamHOZ.Contains(rendsz)).ToList();
+            foreach (var item in listM)
+            {
+                db.muszakiallapottabla.Remove(item);
+            }
+
+            autoktabla a = db.autoktabla.SingleOrDefault(x=>x.rendszam.Contains(rendsz));
+            db.autoktabla.Remove(a);
+
+            db.SaveChanges();
+            Load();
         }
     }
 }

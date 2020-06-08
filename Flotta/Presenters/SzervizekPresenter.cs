@@ -11,42 +11,37 @@ namespace Flotta.Presenters
 {
     class SzervizekPresenter
     {
-        //keresés megvalósítása, adatbázisból törlés, adatbázisba helyezés
-        
-
-
+ 
         private ISzervizekForm view;
         private autokContext db = new autokContext();
         public List<String> rendszamListaPres = new List<String>();
       
-
-        public SzervizekPresenter(ISzervizekForm param) //ez egyszer fut le, a betöltődéskor
+        public SzervizekPresenter(ISzervizekForm param) 
         {
             view = param;
             db = new autokContext();
             getRendszamList();
             LoadDetails();
         }
-
+        /// <summary>
+        /// Adatok frissítéséért felel, függvényeket hív meg, melyek adatokat kérdeznek le az adatbázisból
+        /// </summary>
         public void LoadDetails()
         {
                 var lista = idopontLeirasListaGeneralas(view.selectedRendszam);
-                //view frissítése
-                getKivalasztottReGyaTiKm(view.selectedRendszam); //rendszám, gyártmány, típus, km frissítése
-                loadMuszBizt(view.selectedRendszam); //műszaki, biztosítás frissítése
-                idopontLeirasListaGeneralas(view.selectedRendszam); //ez nem írat ki semmit, csak a szervizek és időpontok listáját lekéri
-                aktIdopontKiiratas(lista, view.aktIdopont); //kiíratja az akt időpontot és a hozzá tartozó leírást
+                getKivalasztottReGyaTiKm(view.selectedRendszam); 
+                loadMuszBizt(view.selectedRendszam); 
+                idopontLeirasListaGeneralas(view.selectedRendszam); 
+                aktIdopontKiiratas(lista, view.aktIdopont); 
                 comboboxFeltoltes(lista);
-
         }
-
+        
         public void getKivalasztottReGyaTiKm(string selected){
             
                 view.aktRendszam = db.autoktabla.Select(x => x.rendszam).FirstOrDefault(x=>x==selected);
                 view.aktGyartmany = db.autoktabla.SingleOrDefault(x => x.rendszam == selected).gyartmany;
                 view.aktTipus = db.autoktabla.SingleOrDefault(x=>x.rendszam==selected).tipus;
                 view.aktKm = db.autoktabla.SingleOrDefault(x=>x.rendszam==selected).km.ToString();
-            
         }
 
         private bool ConnectionExists()
@@ -78,7 +73,7 @@ namespace Flotta.Presenters
         {
             if (selected == "")
             {
-                view.ErrorMessageKeres = Resources.IndexIsmeretlen;
+                view.ErrorMessageDB = Resources.IndexIsmeretlen;
             }
             else
             {
@@ -86,7 +81,11 @@ namespace Flotta.Presenters
                 view.aktBizt = db.muszakiallapottabla.SingleOrDefault(x => x.rendszamHOZ == selected).biztosErv.ToString("yyyy-MM-dd");
             }
         }
-
+        /// <summary>
+        /// A szervizek időpontja és a hozzá tartozó leírás key-value pair listában tárolódik, itt fog feltöltődni a lista
+        /// </summary>
+        /// <param name="selectedRendszam"></param>
+        /// <returns></returns>
         public List<KeyValuePair<DateTime, string>> idopontLeirasListaGeneralas(string selectedRendszam)
         {
             //adott rendszám szervizeit KeyValuePair listába helyezi(ordered!)
@@ -116,7 +115,7 @@ namespace Flotta.Presenters
                 return listaIpLeir;
             }
         }
-
+        
         public void aktIdopontKiiratas(List<KeyValuePair<DateTime, string>> lista, string aktIdopont)
         {
             //kiíratja az akt időpontot + leírást, hogy először lefusson
@@ -159,10 +158,13 @@ namespace Flotta.Presenters
             else {
                 var lista = idopontLeirasListaGeneralas(view.selectedRendszam);
                 loadLeiras(lista, view.aktIdopont);
-
             }
         }
-
+        /// <summary>
+        /// leírás betöltése
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <param name="aktIdopont"></param>
         public void loadLeiras(List<KeyValuePair<DateTime, string>> lista, string aktIdopont)
         {
             //Leírást frissíti 
@@ -183,10 +185,12 @@ namespace Flotta.Presenters
                     }
                 }
                 view.aktLeiras = leiras;
-
             }
         }
-
+        /// <summary>
+        /// comboboxba tölti a szervizelés időpontjait
+        /// </summary>
+        /// <param name="lista"></param>
         public void comboboxFeltoltes(List<KeyValuePair<DateTime, string>> lista)
         {
             if (lista==null)
@@ -221,28 +225,41 @@ namespace Flotta.Presenters
                     view.showHide = true;
                 }
             }
-           
         }
-
-        public void keres()
+        /// <summary>
+        /// Aktuális szerviz id-jét kérdezi le
+        /// </summary>
+        /// <param name="rendszam"></param>
+        /// <param name="idopont"></param>
+        /// <returns></returns>
+        public int aktId(string rendszam, string idopont)
         {
-            string keres = view.search;
-            List<String> keresettLista = new List<string>();
-            if (keres!=null)
+            int id = -1;
+
+            var lista = db.szervizkonyvtabla.Where(x => x.rendszamHOZ.Contains(rendszam)).ToList();
+            foreach (var item in lista)
             {
-                foreach (var r in rendszamListaPres)
+                if (item.idopont.ToString("yyyy-MM-dd").Contains(idopont))
                 {
-                    if (r.Contains(keres))
-                    {
-                        view.searchTextBox = "itt vagyok";
-                        keresettLista.Add(r);
-                    }
+                    id=item.idszervizkonyv;
                 }
-                
-                view.rendszamLista = keresettLista;
             }
+            return id;
         }
 
-
+        public void Save()
+        {
+            db.SaveChanges();
+        }
+        /// <summary>
+        /// Törlés az adatbázisból
+        /// </summary>
+        public void AktTorl()
+        {
+            int id=aktId(view.selectedRendszam,view.aktIdopont);
+            szervizkonyvtabla sz = db.szervizkonyvtabla.SingleOrDefault(x=>x.idszervizkonyv==id);
+            db.szervizkonyvtabla.Remove(sz);
+            Save();
+        }
     }
 }

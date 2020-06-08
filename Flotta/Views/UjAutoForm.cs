@@ -25,6 +25,7 @@ namespace Flotta.Views
         public bool vontato => checkBoxVont.Checked;
         public bool bika => checkBoxBikak.Checked;
         public bool mento => checkBoxMento.Checked;
+        public DateTime evjarat => dateTimePickerEvjarat.Value;
 
         public string errorRendsz { set => errorProviderRendszam.SetError(textBoxRendsz, value); }
         public string errorAlv { set => errorProviderAlvazszam.SetError(textBoxAlv, value); }
@@ -32,6 +33,7 @@ namespace Flotta.Views
         public string errorTipus { set => errorProviderTipus.SetError(textBoxTipus, value); }
         public string errorKm { set => errorProviderTipus.SetError(textBoxKm,value); }
         public string errorDB { set => errorProviderDB.SetError(labelCimke,value); }
+        public string errorEvjarat { set => errorProviderEvjarat.SetError(labelEvjarat, value); }
 
         public void reset()
         {
@@ -44,11 +46,13 @@ namespace Flotta.Views
             checkBoxBikak.Checked = false;
             checkBoxMento.Checked = false;
             checkBoxVont.Checked = false;
+            dateTimePickerEvjarat.Value = DateTime.Now;
             errorProviderAlvazszam.Clear();
             errorProviderGyart.Clear();
             errorProviderKm.Clear();
             errorProviderRendszam.Clear();
-            errorProviderTipus.Clear();   
+            errorProviderTipus.Clear();
+            errorProviderEvjarat.Clear();
         }
 
         public UjAutoForm()
@@ -77,7 +81,6 @@ namespace Flotta.Views
                 presenter.Vegrehajt(); 
                 reset();
             }
-            
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flotta.ViewInterfaces
 {
-    interface IUjAutoForm
+    public interface IUjAutoForm
     {
         string rendszam { get; }
         string alvazszam { get; }
@@ -18,11 +18,14 @@ namespace Flotta.ViewInterfaces
         bool bika { get; }
         bool mento { get; }
 
+        DateTime evjarat { get; }
+
         string errorRendsz { set; }
         string errorAlv { set; }
         string errorGyart { set; }
         string errorTipus { set; }
         string errorDB { set; }
         string errorKm { set; }
+        string errorEvjarat { set; }
     }
 }

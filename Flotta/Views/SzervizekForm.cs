@@ -17,10 +17,8 @@ namespace Flotta.Views
         private  SzervizekPresenter presenter;
   
         public string ErrorMessageDB { set => errorProviderErrorDB.SetError(label9, value); }
-        public string ErrorMessageKeres { set => errorProviderKeres.SetError(buttonKeres, value); }
 
         public List<string> rendszamLista { set => listBoxRendszamok.DataSource = value; }
-        public int listIndex => listBoxRendszamok.SelectedIndex; 
         public string selectedRendszam { get => listBoxRendszamok.SelectedValue.ToString(); }
 
         public string aktRendszam { set => textBoxRendszam.Text = value; }
@@ -38,18 +36,19 @@ namespace Flotta.Views
 
         public bool showHide { set => tableLayoutPanelNav.Visible = value; get => tableLayoutPanelNav.Visible; }
 
-        public string search => textBoxKeres.Text;
-        public string searchTextBox { set => textBoxKeres.Text=value; }
+
        
         public SzervizekForm()
         {
             InitializeComponent();
-            presenter = new SzervizekPresenter(this);
-        }
-
-        private void SzervizekForm_Load(object sender, EventArgs e)
-        {
-            
+            try
+            {
+                presenter = new SzervizekPresenter(this);
+            }
+            catch (NullReferenceException)
+            {
+                errorProviderErrorDB.SetError(label9, "Nincs autó az adatbázisban. ");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,30 +67,21 @@ namespace Flotta.Views
             Close();
         }
 
-        private void buttonKeres_Click(object sender, EventArgs e)
-        {
-            textBoxKeres.Text = null;
-        }
-
-        private void listBoxRendszamok_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
-
         private void listBoxRendszamok_MouseClick(object sender, MouseEventArgs e)
+        {
+            Frissit();
+        }
+
+        public void Frissit()
         {
             comboBoxIdopont.Items.Clear();
             presenter.LoadDetails();
             presenter.LoadLeiras();
-            
         }
 
         private void listBoxRendszamok_KeyUp(object sender, KeyEventArgs e)
         {
-            comboBoxIdopont.Items.Clear();
-            presenter.LoadDetails();
-            presenter.LoadLeiras();
-            
+            Frissit();
         }
 
         private void comboBoxIdopont_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,9 +92,7 @@ namespace Flotta.Views
 
         private void buttonFrissit_Click(object sender, EventArgs e)
         {
-            comboBoxIdopont.Items.Clear();
-            presenter.LoadDetails();
-            presenter.LoadLeiras();
+            Frissit();
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
@@ -143,6 +131,16 @@ namespace Flotta.Views
                 comboBoxIdopont.SelectedIndex = 0;
             }
             presenter.LoadLeiras();
+        }
+
+        private void buttonTorles_Click(object sender, EventArgs e)
+        {
+            presenter.AktTorl();
+            Frissit();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

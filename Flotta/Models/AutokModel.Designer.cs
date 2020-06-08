@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Szoftverfejlesztő\_záródolgozat\2020.02.01\desktop\Flotta\Flotta\Flotta\Models\AutokModel.edmx'. 
+﻿// T4 code generation is enabled for model 'd:\Szoftverfejlesztő\_záródolgozat\2020.03.16\Flotta\Flotta\Models\AutokModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

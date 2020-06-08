@@ -9,10 +9,8 @@ namespace Flotta.ViewInterfaces
     interface ISzervizekForm
     {
         string ErrorMessageDB { set; }
-        string ErrorMessageKeres { set; }
 
         List<String> rendszamLista { set; }
-        int listIndex { get; }
         string selectedRendszam { get; }
 
         string aktRendszam { set; }
@@ -29,8 +27,5 @@ namespace Flotta.ViewInterfaces
         string comboBoxFelt { set; }
 
         bool showHide { get; set; }
-        
-        string search { get; }
-        string searchTextBox { set; }
     }
 }

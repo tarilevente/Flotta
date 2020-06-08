@@ -14,6 +14,7 @@ namespace Flotta.Presenters
     {
         private IAttekintesForm view;
         private autokContext db = new autokContext();
+
         public int OsszAutoDB;
         public int OsszSoforDB;
         public int OsszTeliDB;
@@ -22,20 +23,16 @@ namespace Flotta.Presenters
         public int OsszVontDB;
         public int OsszBikaDB;
         public int OsszMentoDB;
-        public string legrAuto;
-        private List<String> legrAutoLista;
 
         public AttekintesPresenter(IAttekintesForm param)
         {
             view = param;
             db = new autokContext();
-            //adatok betöltése
             LoadData();
         }
 
         public void LoadData()
         {
-            //a view-t feltöltjük adatokkal
             OsszAuto();
             OsszSofor();
             OsszTeli();
@@ -44,7 +41,12 @@ namespace Flotta.Presenters
             OsszVont();
             OsszBika();
             OsszMento();
-            //legrAuto();
+            LegrAuto();
+            KovBizt();
+            KovMusz();
+            LegtobbKm();
+            TeliLista();
+            NyariLista();
         }
 
         private bool ConnectionExists()
@@ -60,13 +62,10 @@ namespace Flotta.Presenters
             }
             else
             {
-                OsszAutoDB = db.autoktabla
-                    .Select(x=>x.rendszam)
-
-                    .Count();
+                OsszAutoDB = db.autoktabla.Count();
                 view.OsszAuto = OsszAutoDB.ToString()+" db";
             }
-        }
+        } 
 
         public void OsszSofor()
         {
@@ -77,8 +76,7 @@ namespace Flotta.Presenters
             else
             {
                 OsszSoforDB = db.felhtabla
-                    .Select(x => x.soforE)
-                    .Where(x=>x.Equals(1))
+                    .Where(x=>x.soforE.Equals(1))
                     .Count();
                 view.OsszSofor = OsszSoforDB.ToString() + " db";
             }
@@ -93,8 +91,7 @@ namespace Flotta.Presenters
             else
             {
                 OsszTeliDB = db.muszakiallapottabla
-                    .Select(x=>x.teligumi)
-                    .Where(x=>x.Equals(1))
+                    .Where(x=>x.teligumi.Equals(1))
                     .Count();
                 view.OsszTeli = OsszTeliDB.ToString() + " db";
             }
@@ -116,6 +113,20 @@ namespace Flotta.Presenters
             }
         }
 
+        public List<autoktabla> getAutok()
+        {
+            if (!ConnectionExists())
+            {
+                view.ErrorMessage = Resources.DBError;
+                return null;
+            }
+            else
+            {
+                var list = db.autoktabla.ToList();
+                return list;
+            }
+        }
+
         public void OsszRadio()
         {
             if (!ConnectionExists())
@@ -124,10 +135,8 @@ namespace Flotta.Presenters
             }
             else
             {
-                OsszRadioDB = db.autoktabla
-                    .Select(x => x.autoradio)
-                    .Where(x => x != null)
-                    .Count();
+                var list=getAutok();
+                var OsszRadioDB = list.Where(x=>x.autoradio==1).Count();
                 view.OsszRadio = OsszRadioDB.ToString() + " db";
             }
         }
@@ -140,10 +149,8 @@ namespace Flotta.Presenters
             }
             else
             {
-                OsszVontDB = db.autoktabla
-                    .Select(x => x.vontatokotel)
-                    .Where(x => x != null)
-                    .Count();
+                var list = getAutok();
+                var OsszVontDB = list.Where(x=>x.vontatokotel==1).Count();
                 view.OsszVont = OsszVontDB.ToString() + " db";
             }
         }
@@ -156,10 +163,8 @@ namespace Flotta.Presenters
             }
             else
             {
-                OsszBikaDB = db.autoktabla
-                    .Select(x => x.bikakabel)
-                    .Where(x => x != null)
-                    .Count();
+                var list = getAutok();
+                var OsszBikaDB = list.Where(x => x.bikakabel == 1).Count();
                 view.OsszBika = OsszBikaDB.ToString() + " db";
             }
         }
@@ -172,22 +177,89 @@ namespace Flotta.Presenters
             }
             else
             {
-                OsszMentoDB = db.autoktabla
-                    .Select(x => x.mentodoboz)
-                    .Where(x => x != null)
-                    .Count();
+                var list = getAutok();
+                var OsszMentoDB = list.Where(x=>x.mentodoboz==1).Count();
                 view.OsszMento = OsszMentoDB.ToString() + " db";
             }
         }
 
         public void LegrAuto()
         {
+            if (ConnectionExists())
+            {
+                List<muszakiallapottabla> list = new List<muszakiallapottabla>();
+                list = db.muszakiallapottabla.Select(x => x).ToList();
+                var legregebbi = list.OrderBy(x => x.evjarat).First();
+                view.legregebbiAuto = legregebbi.rendszamHOZ+Environment.NewLine+legregebbi.evjarat.ToString("yyyy-MM-dd");
+            }
+        }
+
+        public void KovBizt()
+        {
             if (!ConnectionExists())
             {
-                legrAutoLista = db.muszakiallapottabla
-                    .Select(x => x.rendszamHOZ)
-                    .ToList();
+                view.ErrorMessage = Resources.DBError;
             }
+            else
+            {
+                var list = db.muszakiallapottabla.ToList();
+                var kovb = list.OrderBy(x => x.biztosErv).First();
+                view.kovBizt = kovb.rendszamHOZ + Environment.NewLine + kovb.biztosErv.ToString("yyyy-MM-dd");
+            }
+        }
+
+        public void KovMusz()
+        {
+            if (!ConnectionExists())
+            {
+                view.ErrorMessage = Resources.DBError;
+            }
+            else
+            {
+                var list = db.muszakiallapottabla.ToList();
+                var kovm = list.OrderBy(x => x.muszakiErv).First();
+                view.kovMusz = kovm.rendszamHOZ + Environment.NewLine + kovm.muszakiErv.ToString("yyyy-MM-dd");
+            }
+        }
+
+        public void LegtobbKm()
+        {
+            if (!ConnectionExists())
+            {
+                view.ErrorMessage = Resources.DBError;
+            }
+            else
+            {
+                var list = db.autoktabla.ToList();
+                var maxkm = list.OrderByDescending(x=>x.km).First();
+                view.maxKm = maxkm.rendszam + Environment.NewLine + maxkm.km.ToString()+" km";
+            }
+        }
+
+        public void TeliLista()
+        {
+            if (!ConnectionExists())
+            {
+                view.ErrorMessage = Resources.DBError;
+            }
+            else
+            {
+                view.teli = db.muszakiallapottabla.Where(x=>x.teligumi==1).Select(x=>x.rendszamHOZ).ToList();
+            }
+
+        }
+
+        public void NyariLista()
+        {
+            if (!ConnectionExists())
+            {
+                view.ErrorMessage = Resources.DBError;
+            }
+            else
+            {
+                view.nyari = db.muszakiallapottabla.Where(x => x.nyarigumi == 1).Select(x => x.rendszamHOZ).ToList();
+            }
+
         }
     }
 }

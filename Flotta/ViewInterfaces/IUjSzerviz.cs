@@ -14,11 +14,9 @@ namespace Flotta.ViewInterfaces
         DateTime idopont { get; }
         string leiras { get; }
 
-
         string errorRendszam {set;} //formátum
         string errorIdopont { set; } //ha jövőbeli (mostantól 1 hétre előre)
         string errorLeiras { set; } //ha üres
         string errorDB { set; }
-
     }
 }

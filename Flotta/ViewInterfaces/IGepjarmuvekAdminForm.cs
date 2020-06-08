@@ -18,8 +18,8 @@ namespace Flotta.ViewInterfaces
         string km { get; set; }
         DateTime muszaki { get; set; }
         DateTime bizt { get; set; }
-        string aktSofor { get; set; }
         string evjarat { get; set; }
+        string sofor { set; }
 
         bool mMegyei { get; set; }
         bool mOrszagos { get; set; }
@@ -39,6 +39,7 @@ namespace Flotta.ViewInterfaces
         string errorKm { set; }
         string errorMuszaki { set; }
         string errorBizt { set; }
-        string errorSofor { set; }
+        string errorMegyei { set; }
+        string errorTorol { set; }
     }
 }

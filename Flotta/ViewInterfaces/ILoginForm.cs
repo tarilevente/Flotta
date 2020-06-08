@@ -11,6 +11,5 @@ namespace Flotta.ViewInterfaces
         string ErrorMessageDB { set; }
         string ErrorMessageLogin { set; }
         string UserName { get; }
-        string Password { get; }
     }
 }

@@ -38,15 +38,21 @@ namespace Flotta.Presenters
                 {
                     view.errorRendszam = "Hibás a rendszám formátuma, NKK-111";
                     return false;
-                } 
+                }
                 if (!VanIlyenRendszam(view.rendszam))
                 {
                     return false;
-                } 
+                }
+                view.errorRendszam = ""; //a rendszám validáció sikeres, hibaüzenet törölhető
                 if (!IdopontCheck(view.idopont)) 
                 {
                     return false;
-                } 
+                }
+                if (!IdopontCheckGyart(view.idopont,view.rendszam))
+                {
+                    return false;
+                }
+                view.errorIdopont = "";
                 if (view.leiras == string.Empty || string.IsNullOrWhiteSpace(view.leiras))
                 {
                     view.errorLeiras = "Meg kell adnod egy leírást. ";
@@ -57,7 +63,8 @@ namespace Flotta.Presenters
                     view.errorLeiras = "A leírás max. 1500 karakter lehet.";
                     return false;
                 }
-
+                view.errorLeiras = "";
+                
                 return true;
             }
         }
@@ -85,7 +92,6 @@ namespace Flotta.Presenters
                 return false;
 
             return true;
-
         }
 
         private bool VanIlyenRendszam(string rendszam)
@@ -97,7 +103,6 @@ namespace Flotta.Presenters
             }
             else
             {
-                
                 rendszamListaPres = db.autoktabla
                     .Select(x => x.rendszam)
                     .ToList();
@@ -130,17 +135,37 @@ namespace Flotta.Presenters
             return true;
         }
 
+        private bool IdopontCheckGyart(DateTime ip,string rdsz)
+        {
+            var autoTabl = db.muszakiallapottabla.ToList();
+            DateTime gyartIP = DateTime.MaxValue;
+            foreach (var item in autoTabl)
+            {
+                if (item.rendszamHOZ.Contains(rdsz.ToUpper()))
+                {
+                    gyartIP = item.evjarat;
+                }
+            }
+
+            int has = DateTime.Compare( ip, gyartIP);
+            if (has < 0)
+            {
+                view.errorIdopont = "Az autót "+gyartIP+"-kor helyezték forgalomba!";
+                return false;
+            }
+            return true;
+        }
+
         public void Vegrehajt()
         {
-            string rendszam = view.rendszam;
+            string rendszam = view.rendszam.ToUpper();
             DateTime idopont = view.idopont;
             string leiras = view.leiras;
             bool casco = view.casco;
             bool bizt = view.bizt;
-
-            //itt kell feltölteni az adatokat az adatbázisba
-
+            
+            db.szervizkonyvtabla.Add(new szervizkonyvtabla(rendszam,idopont,leiras,casco,bizt));
+            db.SaveChanges();
         }
-
     }
 }

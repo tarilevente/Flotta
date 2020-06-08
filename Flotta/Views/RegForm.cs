@@ -24,11 +24,32 @@ namespace Flotta.Views
             presenter = new RegFormPresenter(this);
         }
 
+        public string vezetekNev => textBoxVez.Text ;
 
-        public string ErrorMessage
-        { //ezek a változók az interface-ben is szerepelnek SET/GET-el
-            set => errorProviderFelh.SetError(textBoxFelh, value);
-        } // errort kiküldi az Errorprovidernek
+        public string keresztnev => textBoxKer.Text;
+
+        public string varos => textBoxVaros.Text;
+
+        public string utcaHsz => textBoxUtca.Text;
+
+        public string telefon => textBoxTel.Text;
+
+        public string felhNev => textBoxFelh.Text;
+
+        public string jelsz => textBoxJeszo.Text;
+
+        public string confirm => textBoxConfirm.Text;
+
+        public string errorDB { set => errorProviderVez.SetError(textBoxVez, value); }
+        public string errorVez { set => errorProviderVez.SetError(textBoxVez,value); }
+        public string errorKer { set => errorProviderKer.SetError(textBoxKer,value); }
+        public string errorVar { set => errorProviderVar.SetError(textBoxVaros,value); }
+        public string errorUtc { set =>errorProviderUtc.SetError(textBoxUtca,value); }
+        public string errorTel { set => errorProviderTel.SetError(textBoxTel,value); }
+        public string errorFelh { set => errorProviderFelh.SetError(textBoxFelh,value); }
+        public string errorJelsz { set =>errorProviderJel.SetError(textBoxJeszo,value); }
+        public string errorConf { set => errorProviderCon.SetError(textBoxConfirm,value); }
+        public string errorButt { set =>errorProviderButt.SetError(buttonReg,value); }
 
         public void clear()
         {
@@ -40,7 +61,17 @@ namespace Flotta.Views
             textBoxFelh.Text = null;
             textBoxJeszo.Text = null;
             textBoxConfirm.Text = null;
+            errorProviderButt.Clear();
+            errorProviderCon.Clear();
+            errorProviderFelh.Clear();
+            errorProviderJel.Clear();
+            errorProviderKer.Clear();
+            errorProviderTel.Clear();
+            errorProviderUtc.Clear();
+            errorProviderVar.Clear();
+            errorProviderVez.Clear();
         }
+
         private void buttonReset_Click(object sender, EventArgs e)
         {
             clear();
@@ -49,8 +80,11 @@ namespace Flotta.Views
 
         private void buttonReg_Click(object sender, EventArgs e)
         {
-            presenter.Authenticate();
-
+            if (presenter.Authenticate())
+            {
+                presenter.Insert();
+                clear();
+            }
         }
 
         private void buttonKilep_Click(object sender, EventArgs e)
@@ -60,7 +94,10 @@ namespace Flotta.Views
             logF.ShowDialog();
             this.Close();
         }
-    }
 
-    
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+    }
 }

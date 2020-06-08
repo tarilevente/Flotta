@@ -1,4 +1,5 @@
 ﻿using Flotta.Presenters;
+using Flotta.Properties;
 using Flotta.ViewInterfaces;
 using System;
 using System.Collections.Generic;
@@ -14,88 +15,51 @@ namespace Flotta.Views
 {
     public partial class LoginForm : Form, ILoginForm
     {
-        private LoginPresenter presenter; //Presentert példányosít!!
+        private LoginPresenter presenter; 
 
-        public LoginForm() //ki fogja példányosítani a loginForm-ot?  -- háát a presenter!
+        public LoginForm() 
         {
             InitializeComponent();
-            presenter = new LoginPresenter(this); //ez miért kell? -- Ha létrehozol egy view-t, akkor a prezentert is példányosítja, és a létrehozott view lesz a prezenter konstruktorában
+            presenter = new LoginPresenter(this);
         }
-
-
-        //ez az Interface létrehozásakor generálódik, melyet később átírtunk. Ha módosítom az interface-t, akkor újra implementáljuk.
-        public string ErrorMessageLogin { //ezek a változók az interface-ben is szerepelnek SET/GET-el
-            set => errorProviderLogin.SetError(textBoxJelsz, value); } // errort kiküldi az Errorprovidernek
+        
+        public string ErrorMessageLogin { 
+            set => errorProviderLogin.SetError(textBoxFelh, value); } 
         public string ErrorMessageDB {
             set => errorProviderDBError.SetError(buttonBelep, value); }
-        public string UserName { get => textBoxFelh.Text; } //kiolvassa a username-et
-        public string Password {get => textBoxJelsz.Text; } //kiolvassa a Passwordot
-
-        private void buttonBelep_Click(object sender, EventArgs e)
-        {
-            presenter.Authenticate();
-            if (presenter.loginSuccess)
-            {
-                var mv = new MainWindow();
-                Hide();
-                mv.ShowDialog();
-                Close();
-            }
-            //ha hamis, akkor a prezenter false ágba fut, akkor a view errorMessage-et beállítja hibára.  De honnan tudja, hogy ki kell írni?
-        }
-
-        private void textBoxJelszo_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonReg.PerformClick();
-            }
-        }
-
+        public string UserName { get => textBoxFelh.Text; }
+        int szamlalo = 0;
+        public static string felhnev = "";
         private void buttonKilep_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void buttonBelep_Click_1(object sender, EventArgs e)
-        {
-            presenter.Authenticate();
-            if (presenter.loginSuccess)
-            {
-                var mv = new MainWindow(); 
-                Hide();
-                mv.ShowDialog();
-                Close();
-            }
-        }
-
-        private void textBoxFelh_KeyDown(object sender, KeyEventArgs e)
-        {
-     
         }
 
         private void textBoxFelh_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Tab)
             {
-                this.textBoxJelsz.Focus();
+                this.textBoxFelh.Focus();
             }
         }
 
-        private void buttonKilep_Click_1(object sender, EventArgs e)
+        private void Reset()
         {
-            this.Close();
+            errorProviderDBError.Clear();
+            errorProviderLogin.Clear();
         }
 
         private void ButtonBelep_Click_2(object sender, EventArgs e)
         {
+            LoginForm2 form2 = new LoginForm2();
+            felhnev = textBoxFelh.Text;
             presenter.Authenticate();
-            if (presenter.loginSuccess)
+            if (presenter.toLogin2Form)
             {
-                var mv = new MainWindow();
+                var mv = new LoginForm2();
                 Hide();
                 mv.ShowDialog();
-                Close();
+                //Close();
             }
         }
 
@@ -105,6 +69,85 @@ namespace Flotta.Views
             Hide();
             regf.ShowDialog();
             Close();
+        }
+
+        private void textBoxFelh_TextChanged(object sender, EventArgs e)
+        {
+            Reset();
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void pictureBox4_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = true;
+            Visible = true;
+        }
+
+        private void pictureBox4_MouseHover_1(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = true;
+            pictureBox4.BackColor = Color.Beige;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = true;
+            pictureBox4.BackColor = Color.Beige;
+        }
+
+        private void pictureBox4_MouseHover_2(object sender, EventArgs e)
+        {
+            labelInn.Visible = true;
+        }
+
+        private void pictureBox5_MouseHover(object sender, EventArgs e)
+        {
+            labelIdo.Visible = true;
+        }
+
+        private void pictureBox6_MouseHover(object sender, EventArgs e)
+        {
+            labelSta.Visible = true;
+        }
+
+        private void pictureBox7_MouseHover(object sender, EventArgs e)
+        {
+            labelCsap.Visible = true;
+        }
+
+        private void pictureBox8_MouseHover(object sender, EventArgs e)
+        {
+            labelMulti.Visible = true;
+        }
+
+        private void pictureBox9_MouseHover(object sender, EventArgs e)
+        {
+            labelUtem.Visible = true;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            panel6.Visible = true;
+        }
+
+        private void textBoxFelh_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (szamlalo==0)
+            {
+                szamlalo++;
+                textBoxFelh.Text = null;
+            }
+        }
+
+        private void textBoxFelh_Click(object sender, EventArgs e)
+        {
+            errorProviderDBError.Clear();
+            errorProviderLogin.Clear();
         }
     }
 }

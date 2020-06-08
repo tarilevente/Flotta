@@ -65,28 +65,6 @@ namespace Flotta.Views
             this.Close();
         }
 
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-      
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-         
-        }
-
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.Cascade);
@@ -115,26 +93,10 @@ namespace Flotta.Views
             }
         }
 
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void buttonKilepes_Click(object sender, EventArgs e)
         {
             this.Close();
             Environment.Exit(0);
-        }
-
-        private void toolStripMenuItemFooldal_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void toolStripMenuItemSzervizek_Click(object sender, EventArgs e)
@@ -211,6 +173,11 @@ namespace Flotta.Views
                 errorProviderDBError2.SetError(buttonKilepes, Resources.DBError);
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
